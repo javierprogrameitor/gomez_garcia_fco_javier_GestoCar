@@ -65,28 +65,21 @@
             </span>
         </div>
         <div class="flex flex-wrap justify-evenly m-2">
-            <div class="text-sm breadcrumbs">
-                <ul>
-                    <li><a>
-                            <form action="" method="POST" class="m-3">
-                                <button id="invitado"
-                                        class="text-gray-100 text-lg md:text-2xl font-black text-shadow-black border-solid">INVITADO</button>
-                            </form>
-                        </a></li>
-                    <li><a>
-                            <form action="" method="POST" class="m-3">
-                                <button id="administrador"
-                                        class="text-gray-100 text-lg md:text-2xl font-black text-shadow-black border-solid">ADMINISTRADOR</button>
-                            </form>
-                        </a></li>
-                    <li><a>
-                            <form action="" method="POST" class="m-3">
-                                <button id="logeado"
-                                        class="text-gray-100  text-lg md:text-2xl font-black text-shadow-black border-solid">USUARIO LOGEADO</button>
-                            </form>
-                        </a></li>
-                </ul>
-            </div>
+            <form action="<c:out value="${contextPath}" />/FrontController" method="post">
+                <div class="text-sm breadcrumbs">
+                    <ul>
+                        <li><a>                          
+                                <button id="invitado" name="boton" value="invitado" class="text-gray-100 text-lg md:text-2xl font-black text-shadow-black border-solid">INVITADO</button>                           
+                            </a></li>
+                        <li><a>
+                                <button id="administrador" name="boton" value="administrador" class="text-gray-100 text-lg md:text-2xl font-black text-shadow-black border-solid">ADMINISTRADOR</button>
+                            </a></li>
+                        <li><a>
+                                <button id="logeado" name="boton" value="logeado" class="text-gray-100  text-lg md:text-2xl font-black text-shadow-black border-solid">USUARIO LOGEADO</button>
+                            </a></li>
+                    </ul>
+                </div>
+            </form>
         </div>
 
         <div>
