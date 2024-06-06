@@ -1,5 +1,6 @@
+package es.gestocar.beans;
 
-package es.albarregas.beans;
+import java.util.List;
 
 /**
  *
@@ -7,19 +8,20 @@ package es.albarregas.beans;
  */
 public class Usuario {
     
-    private int idUsuario;
+    private Short idUsuario;
     private String nombre;
     private String apellidos;
     private String email;
     private String password;
     private String dni;
-    private String campobaja;
+    private Boolean campoBaja;
+    private List<Vehiculo> Vehiculos;
 
-    public int getIdUsuario() {
+    public Short getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(int idUsuario) {
+    public void setIdUsuario(Short idUsuario) {
         this.idUsuario = idUsuario;
     }
 
@@ -63,16 +65,21 @@ public class Usuario {
         this.dni = dni;
     }
 
-    public String getCampobaja() {
-        return campobaja;
+    public Boolean getCampoBaja() {
+        return campoBaja;
     }
 
-    public void setCampobaja(String campobaja) {
-        this.campobaja = campobaja;
+    public void setCampoBaja(Boolean campoBaja) {
+        this.campoBaja = campoBaja;
     }
-    
-    
-    
-    
-    
+
+    public List<Vehiculo> getVehiculos() {
+        return Vehiculos;
+    }
+
+    public void setVehiculos(List<Vehiculo> Vehiculos) {
+        this.Vehiculos = Vehiculos;
+    }
+
+  
 }

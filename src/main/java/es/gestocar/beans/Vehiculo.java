@@ -1,11 +1,12 @@
-package es.albarregas.beans;
+package es.gestocar.beans;
 
 import java.util.Date;
+import java.util.List;
 
 public class Vehiculo {
 
-    private int idVehiculo;
-    private int idUsuario;
+    private Short idVehiculo;
+    private Usuario usuario;
     private String marca;
     private String modelo;
 
@@ -15,28 +16,30 @@ public class Vehiculo {
     private Motor motor;
 
     private String matricula;
-    private int cilindrada;
-    private int caballos;
-    private int color;
+    private String cilindrada;
+    private String caballos;
+    private String color;
     private Date fechaCompra;
     private Date fechaVenta;
     private Double preciocompra;
     private Double precioventa;
+    private List<Foto> fotos;
+    private List<Gasto> gastos;
 
-    public int getIdVehiculo() {
+    public Short getIdVehiculo() {
         return idVehiculo;
     }
 
-    public void setIdVehiculo(int idVehiculo) {
+    public void setIdVehiculo(Short idVehiculo) {
         this.idVehiculo = idVehiculo;
     }
 
-    public int getIdUsuario() {
-        return idUsuario;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public String getMarca() {
@@ -71,27 +74,27 @@ public class Vehiculo {
         this.matricula = matricula;
     }
 
-    public int getCilindrada() {
+    public String getCilindrada() {
         return cilindrada;
     }
 
-    public void setCilindrada(int cilindrada) {
+    public void setCilindrada(String cilindrada) {
         this.cilindrada = cilindrada;
     }
 
-    public int getCaballos() {
+    public String getCaballos() {
         return caballos;
     }
 
-    public void setCaballos(int caballos) {
+    public void setCaballos(String caballos) {
         this.caballos = caballos;
     }
 
-    public int getColor() {
+    public String getColor() {
         return color;
     }
 
-    public void setColor(int color) {
+    public void setColor(String color) {
         this.color = color;
     }
 
@@ -125,6 +128,22 @@ public class Vehiculo {
 
     public void setPrecioventa(Double precioventa) {
         this.precioventa = precioventa;
+    }
+
+    public List<Foto> getFotos() {
+        return fotos;
+    }
+
+    public void setFotos(List<Foto> fotos) {
+        this.fotos = fotos;
+    }
+
+    public List<Gasto> getGastos() {
+        return gastos;
+    }
+
+    public void setGastos(List<Gasto> gastos) {
+        this.gastos = gastos;
     }
 
     

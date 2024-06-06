@@ -1,33 +1,33 @@
-package es.albarregas.beans;
+package es.gestocar.beans;
 
 import java.util.Date;
 
 
 public class Gasto {
     
-    private int idGasto;
-    private int idVehiculo;
+    private Short idGasto;
+    private Vehiculo vehiculo;
     private String concepto;
     private Date fechaGasto;
     private String descripcion;
     private Double importe;
     private String establecimiento;
-    private int kilometros;
+    private String kilometros;
 
-    public int getIdGasto() {
+    public Short getIdGasto() {
         return idGasto;
     }
 
-    public void setIdGasto(int idGasto) {
+    public void setIdGasto(Short idGasto) {
         this.idGasto = idGasto;
     }
 
-    public int getIdVehiculo() {
-        return idVehiculo;
+    public Vehiculo getVehiculo() {
+        return vehiculo;
     }
 
-    public void setIdVehiculo(int idVehiculo) {
-        this.idVehiculo = idVehiculo;
+    public void setVehiculo(Vehiculo vehiculo) {
+        this.vehiculo = vehiculo;
     }
 
     public String getConcepto() {
@@ -70,17 +70,15 @@ public class Gasto {
         this.establecimiento = establecimiento;
     }
 
-    public int getKilometros() {
+    public String getKilometros() {
         return kilometros;
     }
 
-    public void setKilometros(int kilometros) {
+    public void setKilometros(String kilometros) {
         this.kilometros = kilometros;
     }
-    
-    
-    
-    
+
+ 
     
     
 }

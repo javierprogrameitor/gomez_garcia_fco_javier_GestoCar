@@ -1,11 +1,9 @@
+DROP DATABASE IF EXISTS 'gestocardb';
+DROP USER IF EXISTS 'gestocar'@'localhost';
+ 
 CREATE DATABASE  IF NOT EXISTS `gestocardb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `gestocardb`;
--- Crear el usuario gestocar con la contraseña Java*2024
-CREATE USER 'gestocar'@'localhost' IDENTIFIED BY 'Java*2024';
--- Otorgar todos los privilegios en la base de datos gestocardb al usuario gestocar
-GRANT ALL PRIVILEGES ON gestocardb.* TO 'gestocar'@'localhost';
--- Aplicar los cambios de privilegios
-FLUSH PRIVILEGES;
+
 -- MySQL dump 10.13  Distrib 8.0.36, for Linux (x86_64)
 --
 -- Host: 127.0.0.1    Database: gestocardb
@@ -33,7 +31,7 @@ DROP TABLE IF EXISTS `fotos`;
 CREATE TABLE `fotos` (
   `idfotos` smallint NOT NULL AUTO_INCREMENT,
   `idvehiculo` smallint NOT NULL,
-  `foto` varchar(10) NOT NULL,
+  `foto` varchar(15) NOT NULL,
   PRIMARY KEY (`idfotos`),
   KEY `fk_fotos_vehiculos` (`idvehiculo`),
   CONSTRAINT `fk_fotos_vehiculos` FOREIGN KEY (`idvehiculo`) REFERENCES `vehiculos` (`idvehiculo`)
@@ -43,13 +41,6 @@ CREATE TABLE `fotos` (
 --
 -- Dumping data for table `fotos`
 --
-
-LOCK TABLES `fotos` WRITE;
-/*!40000 ALTER TABLE `fotos` DISABLE KEYS */;
-INSERT INTO `fotos` VALUES (1,33,'foto1.png'),(2,34,'foto2.png'),(3,35,'foto3.png'),(4,36,'foto4.png'),(5,37,'foto5.png'),(6,38,'foto6.png'),(7,39,'foto7.png'),(8,40,'foto8.png');
-/*!40000 ALTER TABLE `fotos` ENABLE KEYS */;
-UNLOCK TABLES;
-
 --
 -- Table structure for table `gastos`
 --
@@ -65,7 +56,7 @@ CREATE TABLE `gastos` (
   `descripcion` varchar(100) NOT NULL,
   `importe` decimal(6,2) NOT NULL,
   `establecimiento` varchar(100) DEFAULT NULL,
-  `kilometros` smallint DEFAULT NULL,
+  `kilometros` varchar(7) DEFAULT NULL,
   PRIMARY KEY (`idgasto`),
   KEY `fk_gastos_vehiculos` (`idvehiculo`),
   CONSTRAINT `fk_gastos_vehiculos` FOREIGN KEY (`idvehiculo`) REFERENCES `vehiculos` (`idvehiculo`)
@@ -75,13 +66,11 @@ CREATE TABLE `gastos` (
 --
 -- Dumping data for table `gastos`
 --
-
 LOCK TABLES `gastos` WRITE;
 /*!40000 ALTER TABLE `gastos` DISABLE KEYS */;
 INSERT INTO `gastos` VALUES (9,33,'Cambio de aceite','2022-02-15','Cambio de aceite y filtro',50.00,'Taller \"Mecánica Rápida\"',25000),(10,34,'Reparación de frenos','2023-05-20','Cambio de pastillas de freno y discos',120.00,'Taller \"Frenos Seguros\"',32000),(11,35,'Limpieza y lavado','2024-01-10','Lavado completo y aspirado',20.00,'Lavadero \"Brillantez\"',20000),(12,36,'Inspección técnica (ITV)','2023-09-05','Realización de la inspección técnica anual',45.00,'Estación ITV \"Seguridad Vial\"',28000),(13,37,'Reparación de neumáticos','2024-04-28','Cambio de neumáticos delanteros',200.00,'Taller \"Neumáticos Sánchez\"',21000),(14,38,'Mantenimiento general','2023-11-12','Revisión completa y cambio de líquidos',180.00,'Concesionario \"BMW Service\"',23000),(15,39,'Reparación de avería','2022-08-22','Reparación de la bomba de agua',300.00,'Taller \"Audi Motors\"',19000),(16,40,'Cambio de batería','2024-06-01','Reemplazo de la batería por una nueva',150.00,'Taller \"AutoElectricidad Martínez\"',27000);
 /*!40000 ALTER TABLE `gastos` ENABLE KEYS */;
 UNLOCK TABLES;
-
 --
 -- Table structure for table `usuarios`
 --
@@ -124,11 +113,11 @@ CREATE TABLE `vehiculos` (
   `idusuario` smallint NOT NULL,
   `marca` varchar(20) NOT NULL,
   `modelo` varchar(30) NOT NULL,
-  `motor` varchar(10) NOT NULL,
+  `motor` set ('gasolina','gasoil','electrico') NOT NULL DEFAULT 'gasolina',
   `matricula` varchar(8) NOT NULL,
-  `cilindrada` tinyint NOT NULL,
-  `caballos` tinyint DEFAULT NULL,
-  `color` tinyint DEFAULT NULL,
+  `cilindrada` varchar(5)  NOT NULL,
+  `caballos` varchar(4)  DEFAULT NULL,
+  `color` varchar(7)  DEFAULT NULL,
   `fechacompra` date NOT NULL,
   `fechaventa` date DEFAULT NULL,
   `preciocompra` decimal(7,2) NOT NULL,
@@ -149,6 +138,16 @@ LOCK TABLES `vehiculos` WRITE;
 INSERT INTO `vehiculos` VALUES (33,1,'Toyota','Corolla','V4','KKJ1234',19,84,1,'2020-01-15',NULL,15000.00,NULL),(34,2,'Honda','Civic','V4','DFF5678',19,82,2,'2019-03-22','2023-01-10',17000.00,14000.00),(35,3,'Ford','Fiesta','V3','GHH9101',16,86,3,'2018-06-30',NULL,14000.00,NULL),(36,4,'Chevrolet','Malibu','V6','JKL2345',22,95,4,'2021-09-10',NULL,20000.00,NULL),(37,5,'Nissan','Sentra','V4','MNP6789',18,70,5,'2022-11-25',NULL,18000.00,NULL),(38,1,'BMW','320i','V6','PQR1122',25,90,1,'2017-07-18','2020-02-20',25000.00,22000.00),(39,2,'Audi','A4','V4','HTL3344',20,100,3,'2023-03-05',NULL,30000.00,NULL),(40,3,'Mercedes','C-Class','V6','LBD5566',20,65,4,'2021-12-14',NULL,40000.00,NULL);
 /*!40000 ALTER TABLE `vehiculos` ENABLE KEYS */;
 UNLOCK TABLES;
+
+
+
+
+-- Crear el usuario gestocar con la contraseña Java*2024
+CREATE USER 'gestocar'@'localhost' IDENTIFIED BY 'Java*2024';
+-- Otorgar todos los privilegios en la base de datos gestocardb al usuario gestocar
+GRANT ALL PRIVILEGES ON gestocardb.* TO 'gestocar'@'localhost';
+-- Aplicar los cambios de privilegios
+FLUSH PRIVILEGES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;

@@ -38,7 +38,7 @@
                 font-family: 'Bobby-Jones', sans-serif;
             }
         </style>
-        <title>Pantalla Inicial</title>
+        <title>Gestocar</title>
     </head>
 
     <body class="bg-custom-green">
@@ -47,18 +47,18 @@
             <span class="text-shadow-black text-green-600 text-xl md:text-3xl font-bobby-jones">Iniciar Sesion como:
             </span>
         </div>
-        <div class="flex flex-wrap justify-evenly m-2">
+        <div class="flex flex-wrap justify-evenly">
             <form action="<c:out value="${contextPath}" />/FrontController" method="post">
                 <div class="text-sm breadcrumbs">
                     <ul>
-                        <li><a>                          
-                                <button id="invitado" name="boton" value="invitado" class="text-gray-100 text-lg md:text-2xl font-black text-shadow-black border-solid">INVITADO</button>                           
-                            </a></li>
                         <li><a>
                                 <button id="administrador" name="boton" value="administrador" class="text-gray-100 text-lg md:text-2xl font-black text-shadow-black border-solid">ADMINISTRADOR</button>
                             </a></li>
                         <li><a>
-                                <button id="logeado" name="boton" value="logeado" class="text-gray-100  text-lg md:text-2xl font-black text-shadow-black border-solid">CREAR CUENTA</button>
+                                <button id="login" name="boton" value="login" class="text-gray-100  text-lg md:text-2xl font-black text-shadow-black border-solid">CREAR CUENTA</button>
+                            </a></li>
+                             <li><a>
+                                <button id="legeado" name="boton" value="logeado" class="text-gray-100 text-lg md:text-2xl font-black text-shadow-black border-solid">INICIAR</button>
                             </a></li>
                     </ul>
                 </div>
@@ -66,51 +66,54 @@
         </div>
 
         <div>
-            <hr class="w-full border-t-1 border-white m-2">
-        </div>
-        <div class="carousel w-full max-h-96">
-            <!-- Carousel items -->
-            <div id="slide1" class="carousel-item relative w-full">
-                <img src="IMG/CapturaLogo.png" class="w-full" />
-                <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                    <a href="#slide4" class="btn btn-circle">❮</a>
-                    <a href="#slide2" class="btn btn-circle">❯</a>
-                </div>
-            </div>
-            <div id="slide2" class="carousel-item relative w-full">
-                <img src="IMG/concesionario3.jpg" class="w-full" />
-                <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                    <a href="#slide1" class="btn btn-circle">❮</a>
-                    <a href="#slide3" class="btn btn-circle">❯</a>
-                </div>
-            </div>
-            <div id="slide3" class="carousel-item relative w-full">
-                <img src="IMG/concesionario4.jpg" class="w-full" />
-                <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                    <a href="#slide2" class="btn btn-circle">❮</a>
-                    <a href="#slide4" class="btn btn-circle">❯</a>
-                </div>
-            </div>
-            <div id="slide4" class="carousel-item relative w-full">
-                <img src="IMG/concesionario2.jpg" class="w-full" />
-                <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                    <a href="#slide3" class="btn btn-circle">❮</a>
-                    <a href="#slide5" class="btn btn-circle">❯</a>
-                </div>
-            </div>
-            <div id="slide5" class="carousel-item relative w-full">
-                <img src="IMG/concesionario5.jpg" class="w-full" />
-                <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                    <a href="#slide4" class="btn btn-circle">❮</a>
-                    <a href="#slide1" class="btn btn-circle">❯</a>
-                </div>
-            </div>
+            <hr class="w-full border-t-1 border-white">
         </div>
 
-
+        <div class="flex justify-center items-center">
+            <div class="carousel w-1/2 max-h-96">
+                <!-- Carousel items -->
+                <div id="slide1" class="carousel-item relative w-full">
+                    <img src="IMG/CapturaLogo.png" class="w-full" />
+                    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                        <a href="#slide4" class="btn btn-circle">❮</a>
+                        <a href="#slide2" class="btn btn-circle">❯</a>
+                    </div>
+                </div>
+                <div id="slide2" class="carousel-item relative w-full">
+                    <img src="IMG/concesionario3.jpg" class="w-full" />
+                    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                        <a href="#slide1" class="btn btn-circle">❮</a>
+                        <a href="#slide3" class="btn btn-circle">❯</a>
+                    </div>
+                </div>
+                <div id="slide3" class="carousel-item relative w-full">
+                    <img src="IMG/concesionario4.jpg" class="w-full" />
+                    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                        <a href="#slide2" class="btn btn-circle">❮</a>
+                        <a href="#slide4" class="btn btn-circle">❯</a>
+                    </div>
+                </div>
+                <div id="slide4" class="carousel-item relative w-full">
+                    <img src="IMG/concesionario2.jpg" class="w-full" />
+                    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                        <a href="#slide3" class="btn btn-circle">❮</a>
+                        <a href="#slide5" class="btn btn-circle">❯</a>
+                    </div>
+                </div>
+                <div id="slide5" class="carousel-item relative w-full">
+                    <img src="IMG/concesionario5.jpg" class="w-full" />
+                    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                        <a href="#slide4" class="btn btn-circle">❮</a>
+                        <a href="#slide1" class="btn btn-circle">❯</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+        <jsp:directive.include file="/INC/footer.inc"/>
+                  
         <div>
             <hr class="w-full border-t-1 border-white">
         </div>
-        <jsp:directive.include file="/INC/footer.inc"/>
     </body>
 </html>

@@ -1,4 +1,4 @@
-package es.albarregas.dao;
+package es.gestocar.dao;
 
 import java.sql.Connection;
 import java.sql.SQLException;

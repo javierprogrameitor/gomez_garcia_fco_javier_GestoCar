@@ -37,35 +37,47 @@
                 font-family: 'Bobby-Jones', sans-serif;
             }
         </style>
-        <title>Logeado</title>
+        <title>Login</title>
     </head>
 
-    <body class="bg-custom-green h-full">
+    <body class="bg-custom-green">
         <jsp:directive.include file="/INC/nav.inc"/>
-        <div class="flex flex-grow flex-col items-center justify-center p-4 mt-28 mb-20">
+        <div class="flex flex-grow flex-col items-center justify-center p-4">
             <div class="bg-custom-gray rounded-lg p-6 md:p-8 mb-6 form-border text-shadow-black w-full max-w-md">
-                <form action="<c:out value="${contextPath}" />/LogeadoController" method="post">
+                <form action="<c:out value="${contextPath}" />/LoginController" method="post">
                     <!----------------------------------------------------->
                     <div>
-                        <hr class="w-full border-t-1 border-white mt-4">
+                        <hr class="w-full border-t-1 border-white mb-4">
                     </div>
-
-                    <!----Email------------------------------------------------->
-                    <label for="email" class="block text-green-600 text-lg font-bold mb-2 mt-4">Email:</label>
-                    <input type="email" id="email" name="usuario"   value="<c:if test="${not empty datosFormulario['email']}"><c:out value="${datosFormulario['email']}" /></c:if>"
-                           class="border border-green-600 rounded w-full py-2 px-3 leading-tight focus:outline-none text-shadow-black"
+                    <!----Nombre------------------------------------------------->
+                    <label class="block text-green-600 text-lg font-bold mb-2">Nombre:</label>
+                    <input type="text" id="nombre" name="usuario" value="<c:if test="${not empty datosFormulario['nombre']}"><c:out value="${datosFormulario['nombre']}" /></c:if>"
+                           class="border border-green-600 rounded w-full py-2 px-3 leading-tight focus:outline-none text-shadow-black "
                            required />
+                        <!----Apellidos------------------------------------------------->
+                        <label for="apellidos" class="block text-green-600 text-lg font-bold mb-2 mt-4">Apellidos:</label>
+                        <input type="text" id="apellidos" name="usuario"  value="<c:if test="${not empty datosFormulario['apellidos']}"><c:out value="${datosFormulario['apellidos']}" /></c:if>"
+                               class="border border-green-600 rounded w-full py-2 px-3 leading-tight focus:outline-none text-shadow-black"
+                               required />
+                        <!----Email------------------------------------------------->
+                        <label for="email" class="block text-green-600 text-lg font-bold mb-2 mt-4">Email:</label>
+                        <input type="email" id="email" name="usuario" value="<c:if test="${not empty datosFormulario['email']}"><c:out value="${datosFormulario['email']}" /></c:if>"
+                               class="border border-green-600 rounded w-full py-2 px-3 leading-tight focus:outline-none text-shadow-black"
+                               required />
                         <!----Password------------------------------------------------->
                         <label for="password" class="block text-green-600 text-lg font-bold mb-2 mt-4">Password :</label>
-                        <input type="password" id="password" name="usuario"   value="<c:if test="${not empty datosFormulario['password']}"><c:out value="${datosFormulario['password']}" /></c:if>"
+                        <input type="password" id="password" name="usuario"  value="<c:if test="${not empty datosFormulario['password']}"><c:out value="${datosFormulario['password']}" /></c:if>"
                                class="border border-green-600 rounded w-full py-2 px-3  leading-tight focus:outline-none text-shadow-black"
                                required />
-
+                        <!----DNI------------------------------------------------->
+                        <label for="dni" class="block text-green-600 text-lg font-bold mb-2 mt-4">DNI :</label>
+                        <input type="text" id="dni" name="usuario"  value="<c:if test="${not empty datosFormulario['dni']}"><c:out value="${datosFormulario['dni']}" /></c:if>"
+                               class="border border-green-600 rounded w-full py-2 px-3 leading-tight focus:outline-none text-shadow-black"/>
                         <!----Boton------------------------------------------------->
                         <div class="flex justify-center text-shadow-black mt-4">
-                            <button type="submit" value="Iniciar" name="boton" 
-                                    class="bg-green-700 hover:bg-green-600 text-shadow-black font-bold py-2 px-4 rounded focus:outline-none mt-4 text-shadow-black">
-                                INICIAR</button>
+                            <button type="submit" id="crearCuenta"
+                                    class="bg-green-700 hover:bg-green-600 text-shadow-black font-bold py-2 px-4 rounded focus:outline-none mt-4 text-shadow-black">CREAR
+                                CUENTA</button>
                         </div>
                         <!----------------------------------------------------->
                         <div>

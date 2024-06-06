@@ -1,4 +1,4 @@
-package es.albarregas.controllers;
+package es.gestocar.controllers;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -23,27 +23,25 @@ public class FrontController extends HttpServlet {
 
             String invitado = request.getParameter("invitado");
             String administrador = request.getParameter("administrador");
-            String logeado = request.getParameter("logeado");
-            
-             String opcion = request.getParameter("boton");
+            String login = request.getParameter("login");
+
+            String opcion = request.getParameter("boton");
 
             switch (opcion) {
 
-                case "invitado":
-
-                    url = "JSP/invitado.jsp";
-                    break;
-
                 case "administrador":
 
-                    
-                     url = "JSP/administrador.jsp";
+                    url = "JSP/administrador.jsp";
+                    break;
+
+                case "login":
+
+                    url = "JSP/login.jsp";
                     break;
 
                 case "logeado":
-                    
-                    
-                     url = "JSP/logeado.jsp";
+
+                    url = "JSP/logeado.jsp";
                     break;
             }
 
