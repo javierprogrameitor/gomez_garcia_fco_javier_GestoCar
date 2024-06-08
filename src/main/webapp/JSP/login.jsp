@@ -21,6 +21,9 @@
                     },
                 }
             }
+            function closeModal() {
+                document.getElementById('modal').style.display = 'none';
+            }
         </script>
         <style>
             @font-face {
@@ -41,7 +44,40 @@
     </head>
 
     <body class="bg-custom-green">
-        <jsp:directive.include file="/INC/nav.inc"/>
+        <div>
+            <hr class="w-full border-t-1 border-white">
+        </div>
+        <nav class="bg-custom-green flex flex-wrap justify-evenly p-6">
+            <div class="flex items-center">
+                <img src="IMG/logoConcesionario.png" alt="Logo" class="h-20 w-20">
+            </div>
+            <div class="text-center">
+                <span class="text-shadow-black text-green-600 text-3xl md:text-5xl font-bobby-jones">GESTOCAR, Gestiona tus veh&iacute;culos de forma c&oacute;moda</span>
+            </div>
+        </nav>
+        <div>
+            <hr class="w-full border-t-1 border-white">
+        </div>
+        <c:if test="${usuarioCreado}">
+            <div id="modal" class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+                    <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+                    <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                        <div class="bg-green-600 p-4">
+                            <h3 class="text-lg leading-6 font-medium text-white" id="modal-title">
+                                Usuario creado con éxito
+                            </h3>
+                        </div>
+                        <div class="bg-white px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                            <button type="button" onclick="window.location.href = '${contextPath}/index.jsp'" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm">
+                                Iniciar Sesion con Nombre y Email
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </c:if>
         <div class="flex flex-grow flex-col items-center justify-center p-4">
             <div class="bg-custom-gray rounded-lg p-6 md:p-8 mb-6 form-border text-shadow-black w-full max-w-md">
                 <form action="<c:out value="${contextPath}" />/LoginController" method="post">
@@ -51,41 +87,41 @@
                     </div>
                     <!----Nombre------------------------------------------------->
                     <label class="block text-green-600 text-lg font-bold mb-2">Nombre:</label>
-                    <input type="text" id="nombre" name="usuario" value="<c:if test="${not empty datosFormulario['nombre']}"><c:out value="${datosFormulario['nombre']}" /></c:if>"
+                    <input type="text" id="nombre" name="nombre" 
                            class="border border-green-600 rounded w-full py-2 px-3 leading-tight focus:outline-none text-shadow-black "
                            required />
-                        <!----Apellidos------------------------------------------------->
-                        <label for="apellidos" class="block text-green-600 text-lg font-bold mb-2 mt-4">Apellidos:</label>
-                        <input type="text" id="apellidos" name="usuario"  value="<c:if test="${not empty datosFormulario['apellidos']}"><c:out value="${datosFormulario['apellidos']}" /></c:if>"
-                               class="border border-green-600 rounded w-full py-2 px-3 leading-tight focus:outline-none text-shadow-black"
-                               required />
-                        <!----Email------------------------------------------------->
-                        <label for="email" class="block text-green-600 text-lg font-bold mb-2 mt-4">Email:</label>
-                        <input type="email" id="email" name="usuario" value="<c:if test="${not empty datosFormulario['email']}"><c:out value="${datosFormulario['email']}" /></c:if>"
-                               class="border border-green-600 rounded w-full py-2 px-3 leading-tight focus:outline-none text-shadow-black"
-                               required />
-                        <!----Password------------------------------------------------->
-                        <label for="password" class="block text-green-600 text-lg font-bold mb-2 mt-4">Password :</label>
-                        <input type="password" id="password" name="usuario"  value="<c:if test="${not empty datosFormulario['password']}"><c:out value="${datosFormulario['password']}" /></c:if>"
-                               class="border border-green-600 rounded w-full py-2 px-3  leading-tight focus:outline-none text-shadow-black"
-                               required />
-                        <!----DNI------------------------------------------------->
-                        <label for="dni" class="block text-green-600 text-lg font-bold mb-2 mt-4">DNI :</label>
-                        <input type="text" id="dni" name="usuario"  value="<c:if test="${not empty datosFormulario['dni']}"><c:out value="${datosFormulario['dni']}" /></c:if>"
-                               class="border border-green-600 rounded w-full py-2 px-3 leading-tight focus:outline-none text-shadow-black"/>
-                        <!----Boton------------------------------------------------->
-                        <div class="flex justify-center text-shadow-black mt-4">
-                            <button type="submit" id="crearCuenta"
-                                    class="bg-green-700 hover:bg-green-600 text-shadow-black font-bold py-2 px-4 rounded focus:outline-none mt-4 text-shadow-black">CREAR
-                                CUENTA</button>
-                        </div>
-                        <!----------------------------------------------------->
-                        <div>
-                            <hr class="w-full border-t-1 border-white mt-4">
-                        </div>
-                    </form>
-                </div>
+                    <!----Apellidos------------------------------------------------->
+                    <label for="apellidos" class="block text-green-600 text-lg font-bold mb-2 mt-4">Apellidos:</label>
+                    <input type="text" id="apellidos" name="apellidos"  
+                           class="border border-green-600 rounded w-full py-2 px-3 leading-tight focus:outline-none text-shadow-black"
+                           required />
+                    <!----Email------------------------------------------------->
+                    <label for="email" class="block text-green-600 text-lg font-bold mb-2 mt-4">Email:</label>
+                    <input type="email" id="email" name="email" 
+                           class="border border-green-600 rounded w-full py-2 px-3 leading-tight focus:outline-none text-shadow-black"
+                           required />
+                    <!----Password------------------------------------------------->
+                    <label for="password" class="block text-green-600 text-lg font-bold mb-2 mt-4">Password :</label>
+                    <input type="password" id="password" name="password"  
+                           class="border border-green-600 rounded w-full py-2 px-3  leading-tight focus:outline-none text-shadow-black"
+                           required />
+                    <!----DNI------------------------------------------------->
+                    <label for="dni" class="block text-green-600 text-lg font-bold mb-2 mt-4">DNI :</label>
+                    <input type="text" id="dni" name="dni" 
+                           class="border border-green-600 rounded w-full py-2 px-3 leading-tight focus:outline-none text-shadow-black"/>
+                    <!----Boton------------------------------------------------->
+                    <div class="flex justify-center text-shadow-black mt-4">
+                        <button type="submit" value="crearCuenta" name="boton"
+                                class="bg-green-700 hover:bg-green-600 text-shadow-black font-bold py-2 px-4 rounded focus:outline-none mt-4 text-shadow-black">CREAR
+                            CUENTA</button>
+                    </div>
+                    <!----------------------------------------------------->
+                    <div>
+                        <hr class="w-full border-t-1 border-white mt-4">
+                    </div>
+                </form>
             </div>
+        </div>
         <jsp:directive.include file="/INC/footer.inc"/>
     </body>
 </html>

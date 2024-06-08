@@ -42,8 +42,22 @@
     </head>
 
     <body class="bg-custom-green">
-        <jsp:directive.include file="/INC/nav.inc"/>
-        <div class="text-center m-4">
+       <div>
+    <hr class="w-full border-t-1 border-white">
+</div>
+<nav class="bg-custom-green flex flex-wrap justify-evenly p-6">
+    <div class="flex items-center">
+        <img src="IMG/logoConcesionario.png" alt="Logo" class="h-20 w-20">
+    </div>
+    <div class="text-center">
+        <span class="text-shadow-black text-green-600 text-3xl md:text-5xl font-bobby-jones">GESTOCAR, Gestiona tus veh&iacute;culos de forma c&oacute;moda</span>
+    </div>
+</nav>
+<div>
+    <hr class="w-full border-t-1 border-white">
+</div>
+
+        <div class="text-center mt-4">
             <span class="text-shadow-black text-green-600 text-xl md:text-3xl font-bobby-jones">Iniciar Sesion como:
             </span>
         </div>
@@ -58,7 +72,7 @@
                                 <button id="login" name="boton" value="login" class="text-gray-100  text-lg md:text-2xl font-black text-shadow-black border-solid">CREAR CUENTA</button>
                             </a></li>
                              <li><a>
-                                <button id="legeado" name="boton" value="logeado" class="text-gray-100 text-lg md:text-2xl font-black text-shadow-black border-solid">INICIAR</button>
+                                <button id="legeado" name="boton" value="logeado" class="text-gray-100 text-lg md:text-2xl font-black text-shadow-black border-solid">ENTRAR-Nombre y Email-</button>
                             </a></li>
                     </ul>
                 </div>
@@ -66,10 +80,10 @@
         </div>
 
         <div>
-            <hr class="w-full border-t-1 border-white">
+            <hr class="w-full border-t-1 border-white mt-4">
         </div>
 
-        <div class="flex justify-center items-center">
+        <div class="flex justify-center items-center mt-10 mb-10">
             <div class="carousel w-1/2 max-h-96">
                 <!-- Carousel items -->
                 <div id="slide1" class="carousel-item relative w-full">

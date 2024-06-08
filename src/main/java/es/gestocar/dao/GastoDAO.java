@@ -1,21 +1,22 @@
+
 package es.gestocar.dao;
 
-import es.gestocar.beans.Foto;
+import es.gestocar.beans.Gasto;
 import java.util.List;
 
 /**
  *
  * @author javier
  */
-public class FotoDAO implements IFotoDAO {
+public class GastoDAO implements IGastoDAO {
 
     @Override
-    public List<Foto> getFotosByCondicion(String[] registros) {
+    public List<Gasto> getGastoByCondicion(String[] registros) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void delete(Foto foto) {
+    public void delete(Gasto gasto) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -23,8 +24,7 @@ public class FotoDAO implements IFotoDAO {
     public void closeConnection() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-  
     
-
-   
+    
+    
 }

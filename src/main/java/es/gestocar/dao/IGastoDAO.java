@@ -1,28 +1,29 @@
 
 package es.gestocar.dao;
 
-import es.gestocar.beans.Foto;
-import es.gestocar.beans.Vehiculo;
+
+import es.gestocar.beans.Gasto;
 import java.util.List;
 
 /**
  *
  * @author javier
  */
-public interface IFotoDAO {
+public interface IGastoDAO {
     
+    
+       
      /**
      * Obtiene las fotos cuyo id está dentro de un rango de valores
-     * @param registros Valores de los diferentes id que se pretenden obtener
      * @return Lista de objetos fotos
      */
-    public List<Foto> getFotosByCondicion (String[] registros);
+    public List<Gasto> getGastoByCondicion (String[] registros);
     
     /**
      * Elimina una foto de un vehiculo
      * @param foto Objeto foto que se pretende eliminar
      */
-    public void delete(Foto foto);
+    public void delete(Gasto gasto);
     
     /**
      * Abandona el hilo de la conexión a la base de datos

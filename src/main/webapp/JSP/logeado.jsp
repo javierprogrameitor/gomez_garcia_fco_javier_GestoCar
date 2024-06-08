@@ -41,39 +41,52 @@
     </head>
 
     <body class="bg-custom-green h-full">
-        <jsp:directive.include file="/INC/nav.inc"/>
+        <div>
+            <hr class="w-full border-t-1 border-white">
+        </div>
+        <nav class="bg-custom-green flex flex-wrap justify-evenly p-6">
+            <div class="flex items-center">
+                <img src="IMG/logoConcesionario.png" alt="Logo" class="h-20 w-20">
+            </div>
+            <div class="text-center">
+                <span class="text-shadow-black text-green-600 text-3xl md:text-5xl font-bobby-jones">GESTOCAR, Gestiona tus veh&iacute;culos de forma c&oacute;moda</span>
+            </div>
+        </nav>
+        <div>
+            <hr class="w-full border-t-1 border-white">
+        </div>
         <div class="flex flex-grow flex-col items-center justify-center p-4 mt-28 mb-20">
             <div class="bg-custom-gray rounded-lg p-6 md:p-8 mb-6 form-border text-shadow-black w-full max-w-md">
-                <form action="<c:out value="${contextPath}" />/LogeadoController" method="post">
+                <form action="${pageContext.request.contextPath}/LogeadoController" method="post">
                     <!----------------------------------------------------->
                     <div>
                         <hr class="w-full border-t-1 border-white mt-4">
                     </div>
 
                     <!----Email------------------------------------------------->
-                    <label for="email" class="block text-green-600 text-lg font-bold mb-2 mt-4">Email:</label>
-                    <input type="email" id="email" name="usuario"   value="<c:if test="${not empty datosFormulario['email']}"><c:out value="${datosFormulario['email']}" /></c:if>"
+                    <label  class="block text-green-600 text-lg font-bold mb-2 mt-4">Nombre</label>
+                    <input type="text" id="nombre" name="nombre"   
                            class="border border-green-600 rounded w-full py-2 px-3 leading-tight focus:outline-none text-shadow-black"
                            required />
-                        <!----Password------------------------------------------------->
-                        <label for="password" class="block text-green-600 text-lg font-bold mb-2 mt-4">Password :</label>
-                        <input type="password" id="password" name="usuario"   value="<c:if test="${not empty datosFormulario['password']}"><c:out value="${datosFormulario['password']}" /></c:if>"
-                               class="border border-green-600 rounded w-full py-2 px-3  leading-tight focus:outline-none text-shadow-black"
-                               required />
+                    <!----Password------------------------------------------------->
+                    <label  class="block text-green-600 text-lg font-bold mb-2 mt-4">Email :</label>
+                    <input type="email" id="email" name="email"  
+                           class="border border-green-600 rounded w-full py-2 px-3  leading-tight focus:outline-none text-shadow-black"
+                           required />
 
-                        <!----Boton------------------------------------------------->
-                        <div class="flex justify-center text-shadow-black mt-4">
-                            <button type="submit" value="Iniciar" name="boton" 
-                                    class="bg-green-700 hover:bg-green-600 text-shadow-black font-bold py-2 px-4 rounded focus:outline-none mt-4 text-shadow-black">
-                                INICIAR</button>
-                        </div>
-                        <!----------------------------------------------------->
-                        <div>
-                            <hr class="w-full border-t-1 border-white mt-4">
-                        </div>
-                    </form>
-                </div>
+                    <!----Boton------------------------------------------------->
+                    <div class="flex justify-center text-shadow-black mt-4">
+                        <button type="submit" value="Iniciar" name="boton" 
+                                class="bg-green-700 hover:bg-green-600 text-shadow-black font-bold py-2 px-4 rounded focus:outline-none mt-4 text-shadow-black">
+                            INICIAR</button>
+                    </div>
+                    <!----------------------------------------------------->
+                    <div>
+                        <hr class="w-full border-t-1 border-white mt-4">
+                    </div>
+                </form>
             </div>
+        </div>
         <jsp:directive.include file="/INC/footer.inc"/>
     </body>
 </html>

@@ -5,15 +5,15 @@ import java.util.List;
 
 public class Vehiculo {
 
-    private Short idVehiculo;
-    private Usuario usuario;
+    private int idVehiculo;
+    private int usuarioId;
     private String marca;
     private String modelo;
 
-    private enum Motor {
+    public enum Motor {
         GASOLINA, GASOIL, ELECTRICO
     }
-    private Motor motor;
+    public Motor motor;
 
     private String matricula;
     private String cilindrada;
@@ -26,21 +26,23 @@ public class Vehiculo {
     private List<Foto> fotos;
     private List<Gasto> gastos;
 
-    public Short getIdVehiculo() {
+    public int getIdVehiculo() {
         return idVehiculo;
     }
 
-    public void setIdVehiculo(Short idVehiculo) {
+    public void setIdVehiculo(int idVehiculo) {
         this.idVehiculo = idVehiculo;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public int getUsuarioId() {
+        return usuarioId;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setUsuarioId(int usuarioId) {
+        this.usuarioId = usuarioId;
     }
+
+
 
     public String getMarca() {
         return marca;

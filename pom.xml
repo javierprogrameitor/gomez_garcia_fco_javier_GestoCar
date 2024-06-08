@@ -31,7 +31,7 @@
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
-             <!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+        <!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
@@ -56,6 +56,12 @@
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>20231013</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.17.0</version>
         </dependency>
         
     </dependencies>

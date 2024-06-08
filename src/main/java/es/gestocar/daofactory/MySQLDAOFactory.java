@@ -1,7 +1,9 @@
 package es.gestocar.daofactory;
 
 import es.gestocar.dao.FotoDAO;
+import es.gestocar.dao.GastoDAO;
 import es.gestocar.dao.IFotoDAO;
+import es.gestocar.dao.IGastoDAO;
 import es.gestocar.dao.IUsuarioDAO;
 import es.gestocar.dao.IVehiculoDAO;
 import es.gestocar.dao.UsuarioDAO;
@@ -11,7 +13,7 @@ import es.gestocar.dao.VehiculoDAO;
  *
  * @author javier
  */
-public class MySQLDAOFactory extends DAOFactory{
+public class MySQLDAOFactory extends DAOFactory {
 
  
     @Override
@@ -20,13 +22,18 @@ public class MySQLDAOFactory extends DAOFactory{
     }
 
     @Override
-    public IVehiculoDAO getArticuloDAO() {
+    public IVehiculoDAO getVehiculoDAO() {
         return new VehiculoDAO();
     }
 
     @Override
     public IFotoDAO getFotoDAO() {
-        return new FotoDAO();
+        return new FotoDAO(); 
+    }
+
+    @Override
+    public IGastoDAO getGastoDAO() {
+        return new GastoDAO();
     }
 
 }

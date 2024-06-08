@@ -2,6 +2,7 @@
 package es.gestocar.daofactory;
 
 import es.gestocar.dao.IFotoDAO;
+import es.gestocar.dao.IGastoDAO;
 import es.gestocar.dao.IUsuarioDAO;
 import es.gestocar.dao.IVehiculoDAO;
 
@@ -21,12 +22,17 @@ public abstract class DAOFactory {
      * Objeto DAO de Vehiculo
      * @return interface de dicho objeto DAO
      */
-    public abstract IVehiculoDAO getArticuloDAO();
+    public abstract IVehiculoDAO getVehiculoDAO();
     /**
      * Objeto DAO de Foto
      * @return interface de dicho objeto DAO
      */
     public abstract IFotoDAO getFotoDAO();
+     /**
+     * Objeto DAO de Gasto
+     * @return interface de dicho objeto DAO
+     */
+    public abstract IGastoDAO getGastoDAO();
     
     /**
      * Obtiene la fábrica concreta a la fuente de datos

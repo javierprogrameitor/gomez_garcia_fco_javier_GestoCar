@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class Usuario {
     
-    private Short idUsuario;
+    private int idUsuario;
     private String nombre;
     private String apellidos;
     private String email;
@@ -16,14 +16,26 @@ public class Usuario {
     private String dni;
     private Boolean campoBaja;
     private List<Vehiculo> Vehiculos;
+    
+    
+        // Constructor por defecto
+    public Usuario() {}
 
-    public Short getIdUsuario() {
+    // Constructor que acepta un Short
+    public Usuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    // Getters y Setters
+    public int getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(Short idUsuario) {
+    public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
     }
+
+
 
     public String getNombre() {
         return nombre;
