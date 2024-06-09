@@ -22,13 +22,14 @@ public interface IVehiculoDAO {
      * @param vehiculo
      * @return Objeto Boolean, TRUE si todo ha ido bien y FALSE en caso contrario
      */
-    public Boolean update(Vehiculo vehiculo);
+    public void update(Vehiculo vehiculo);
     
     /**
-     * Obtiene todos los vehiculos y sus fotos asociadas
-     * @return Lista de objetos artículo
+     * 
+     * @param usuarioId
+     * @return 
      */
-    public List<Vehiculo> getArticulos();
+    List<Vehiculo> getVehiculosByUsuarioId(int usuarioId);
     
     /**
      * Obtiene un vehiculo y sus fotos asociadas a partir de un id
@@ -36,19 +37,12 @@ public interface IVehiculoDAO {
      * @return Objeto vehiculo con sus fotos asociadas
      */
     public Vehiculo getVehiculoById(int id);
-    
-    /**
-     * Obtiene los vehiculos cuyo id está dentro de un rango de valores
-     * @param registros
-     * @return Lista de objetos vehiculos
-     */
-    public List<Vehiculo> getArticulosByCondicion (String[] registros);
-    
+  
     /**
      * Elimina un vehiculo y sus fotos asociadas
      * @param vehiculo
      */
-    public void delete(Vehiculo vehiculo);
+    public void delete(int idVehiculo);
     
     /**
      * Abandona el hilo de la conexión a la base de datos

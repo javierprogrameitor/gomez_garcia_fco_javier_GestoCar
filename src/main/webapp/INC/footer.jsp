@@ -1,4 +1,3 @@
-<!-- Footer -->
 <div>
     <hr class="w-full border-t-1 border-white">
 </div>

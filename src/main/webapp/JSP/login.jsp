@@ -1,4 +1,5 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<jsp:directive.include file="../INC/metas.inc"/>
 <jsp:directive.page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"/>
 <!DOCTYPE html>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" scope="session"/>
@@ -44,20 +45,7 @@
     </head>
 
     <body class="bg-custom-green">
-        <div>
-            <hr class="w-full border-t-1 border-white">
-        </div>
-        <nav class="bg-custom-green flex flex-wrap justify-evenly p-6">
-            <div class="flex items-center">
-                <img src="IMG/logoConcesionario.png" alt="Logo" class="h-20 w-20">
-            </div>
-            <div class="text-center">
-                <span class="text-shadow-black text-green-600 text-3xl md:text-5xl font-bobby-jones">GESTOCAR, Gestiona tus veh&iacute;culos de forma c&oacute;moda</span>
-            </div>
-        </nav>
-        <div>
-            <hr class="w-full border-t-1 border-white">
-        </div>
+        <c:import url="../INC/nav.jsp"/> 
         <c:if test="${usuarioCreado}">
             <div id="modal" class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
                 <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
@@ -122,6 +110,9 @@
                 </form>
             </div>
         </div>
-        <jsp:directive.include file="/INC/footer.inc"/>
+               <c:import url="/INC/footer.jsp"/> 
+        <div>
+            <hr class="w-full border-t-1 border-white">
+        </div>
     </body>
 </html>

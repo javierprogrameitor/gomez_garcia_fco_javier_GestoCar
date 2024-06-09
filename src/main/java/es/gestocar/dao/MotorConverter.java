@@ -11,17 +11,21 @@ import org.apache.commons.beanutils.Converter;
  */
 public class MotorConverter implements Converter {
     
-        @Override
+    @Override
     public Object convert(Class type, Object value) {
         if (value == null) {
-            throw new ConversionException("No value specified");
+            return null;
         }
 
-        if (type == Vehiculo.Motor.class) {
-            return Vehiculo.Motor.valueOf(value.toString().toUpperCase());
-        } else {
-            throw new ConversionException("Could not convert " + value + " to " + type.getName());
+        if (value instanceof String) {
+            String strValue = (String) value;
+            try {
+                return Vehiculo.Motor.valueOf(strValue.toUpperCase());
+            } catch (IllegalArgumentException e) {
+                throw new ConversionException("Invalid value for Motor: " + strValue);
+            }
         }
+
+        throw new ConversionException("Can't convert value '" + value + "' to type " + type);
     }
-    
 }

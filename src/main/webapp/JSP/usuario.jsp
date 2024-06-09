@@ -1,5 +1,5 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<jsp:directive.include file="/INC/metas.inc"/>
+<jsp:directive.include file="../INC/metas.inc"/>
 <jsp:directive.page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"/>
 <!DOCTYPE html>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" scope="session"/>
@@ -40,21 +40,9 @@
         </style>
         <title>Usuario</title>
     </head>
-    <body class="bg-custom-green">
-        <div>
-            <hr class="w-full border-t-1 border-white">
-        </div>
-        <nav class="bg-custom-green flex flex-wrap justify-evenly p-6">
-            <div class="flex items-center">
-                <img src="../IMG/logoConcesionario.png" alt="Logo" class="h-20 w-20">
-            </div>
-            <div class="text-center">
-                <span class="text-shadow-black text-green-600 text-3xl md:text-5xl font-bobby-jones">GESTOCAR, Gestiona tus veh&iacute;culos de forma c&oacute;moda</span>
-            </div>
-        </nav>
-        <div>
-            <hr class="w-full border-t-1 border-white">
-        </div>
+    <body class="bg-custom-green font-bobby-jones">
+      <c:import url="../INC/nav.jsp"/> 
+
         <div class="flex flex-grow flex-inline p-4 mt-18 mb-10">
             <!-- Primer Bloque: Crear Vehículo -->
             <div class="bg-custom-gray rounded-lg p-6 md:p-8 mb-6 form-border text-shadow-black w-full max-w-md">
@@ -93,7 +81,7 @@
                         <!-- Fecha Compra -->
                         <div class="border border-green-600 text-green-600 text-lg font-bold rounded w-full mb-2 mt-4">
                             <label for="fechaMatriculacion">* Fecha de Matriculación </label>
-                            <input id="fechaMatriculacion" type="date" name="fechaMatriculacion" placeholder="dd-mm-aaaa" required />
+                            <input id="fechaMatriculacion" type="date" name="fechaCompra" placeholder="dd-mm-aaaa" required />
                         </div>
                         <!-- Fecha Venta -->
                         <div class="border border-green-600 text-green-600 text-lg font-bold rounded w-full mb-2 mt-4">
@@ -102,13 +90,13 @@
                         </div>
                         <!-- Precio Compra -->
                         <label class="block text-green-600 text-lg font-bold mb-2 mt-4">* Precio Compra :</label>
-                        <input type="text" id="precioCompra" name="precioCompra" class="border border-green-600 rounded w-full py-2 px-3 leading-tight focus:outline-none text-shadow-black" required />
+                        <input type="text" id="precioCompra" name="preciocompra" class="border border-green-600 rounded w-full py-2 px-3 leading-tight focus:outline-none text-shadow-black" required />
                         <!-- Precio Venta -->
                         <label class="block text-green-600 text-lg font-bold mb-2 mt-4">Precio Venta :</label>
-                        <input type="text" id="precioVenta" name="precioVenta" class="border border-green-600 rounded w-full py-2 px-3 leading-tight focus:outline-none text-shadow-black" />
+                        <input type="text" id="precioVenta" name="precioventa" class="border border-green-600 rounded w-full py-2 px-3 leading-tight focus:outline-none text-shadow-black" />
                         <!-- Botón -->
                         <div class="flex justify-center text-shadow-black mt-4">
-                            <button type="submit" value="Guardar" name="boton" class="bg-green-700 hover:bg-green-600 text-shadow-black font-bold py-2 px-4 rounded focus:outline-none mt-4 text-shadow-black">
+                            <button type="submit" value="crearVehiculo" name="boton" class="bg-green-700 hover:bg-green-600 text-shadow-black font-bold py-2 px-4 rounded focus:outline-none mt-4 text-shadow-black">
                                 CREAR VEHICULO
                             </button>
                         </div>
@@ -148,6 +136,15 @@
                         </button>
                     </form>
                 </div>
+                         <!-- Boton Salir -->
+                <div class="flex justify-center text-shadow-black mt-4">
+                    <form action="<c:out value='${contextPath}' />/Return" method="post"> 
+                        <button type="submit" class="bg-green-700 hover:bg-green-600 text-shadow-black font-bold py-2 px-4 rounded focus:outline-none mt-4 text-shadow-black">
+                           SALIR
+                        </button>
+                    </form>
+                </div>  
+                        
 
                 <div>
                     <hr class="w-full border-t-1 border-white mt-4">
@@ -155,7 +152,9 @@
             </div>
         </div>
 
-
-        <jsp:directive.include file="/INC/footer.inc"/>
+               <c:import url="/INC/footer.jsp"/> 
+        <div>
+            <hr class="w-full border-t-1 border-white">
+        </div>
     </body>
 </html>

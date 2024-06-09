@@ -39,7 +39,7 @@ public class crearVehiculoController extends HttpServlet {
         Vehiculo vehiculo = new Vehiculo();
         Boolean error = false;
 
-        if (request.getParameter("boton").equals("Guardar")) {
+        if (request.getParameter("boton").equals("crearVehiculo")) {
 
             DAOFactory daof = DAOFactory.getDAOFactory();
             IVehiculoDAO adao = daof.getVehiculoDAO();
@@ -54,7 +54,7 @@ public class crearVehiculoController extends HttpServlet {
             try {
                 BeanUtils.populate(vehiculo, request.getParameterMap());
                 vehiculo.setUsuarioId(usuarioId); // Seteamos el id del usuario en el vehiculo
-  // Verificación de campos obligatorios y convertir fechas correctamente
+               // Verificación de campos obligatorios y convertir fechas correctamente
                 if (vehiculo.getFechaCompra() == null) {
                     vehiculo.setFechaCompra(new Date()); // o algún valor por defecto
                 }
