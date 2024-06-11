@@ -4,9 +4,7 @@ import es.gestocar.beans.Vehiculo;
 import es.gestocar.dao.IVehiculoDAO;
 import es.gestocar.dao.MotorConverter;
 
-
 import es.gestocar.daofactory.DAOFactory;
-
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -44,7 +42,7 @@ public class crearVehiculoController extends HttpServlet {
             DAOFactory daof = DAOFactory.getDAOFactory();
             IVehiculoDAO adao = daof.getVehiculoDAO();
             Enumeration<String> campos = request.getParameterNames();
-             // Registrar un convertidor para el tipo de motor
+            // Registrar un convertidor para el tipo de motor
             ConvertUtils.register(new MotorConverter(), Vehiculo.Motor.class);
             // Registrar un convertidor de fecha para el formato esperado
             DateConverter converter = new DateConverter(null);
@@ -54,22 +52,12 @@ public class crearVehiculoController extends HttpServlet {
             try {
                 BeanUtils.populate(vehiculo, request.getParameterMap());
                 vehiculo.setUsuarioId(usuarioId); // Seteamos el id del usuario en el vehiculo
-               // Verificación de campos obligatorios y convertir fechas correctamente
-                if (vehiculo.getFechaCompra() == null) {
-                    vehiculo.setFechaCompra(new Date()); // o algún valor por defecto
-                }
-                if (vehiculo.getFechaVenta() == null) {
-                    vehiculo.setFechaVenta(new Date()); // o algún valor por defecto
-                }
-                if (vehiculo.getPreciocompra() == null) {
-                    vehiculo.setPreciocompra(0.0); // valor por defecto
-                }
-                if (vehiculo.getPrecioventa() == null) {
-                    vehiculo.setPrecioventa(0.0); // valor por defecto
-                }
-
                 if (!adao.add(vehiculo)) {
                     error = true;
+                } else {
+                    // Obtener el ID del vehículo recién creado
+                    int vehiculoId = adao.getLastInsertedId(); // Suponiendo que tienes un método para obtener el último ID insertado
+                    session.setAttribute("vehiculoId", vehiculoId); // Establecer el id del vehículo en la sesión
                 }
             } catch (IllegalAccessException | InvocationTargetException ex) {
                 Logger.getLogger(crearVehiculoController.class.getName()).log(Level.SEVERE, null, ex);

@@ -41,7 +41,7 @@
         <title>Logeado</title>
     </head>
 
-    <body class="bg-custom-green h-full">
+    <body class="bg-custom-green font-bobby-jones h-auto">
         <c:import url="../INC/nav.jsp"/> 
         <div class="flex flex-grow flex-col items-center justify-center p-4 mt-28 mb-20">
             <div class="bg-custom-gray rounded-lg p-6 md:p-8 mb-6 form-border text-shadow-black w-full max-w-md">

@@ -61,8 +61,6 @@ public class modificarVehiculoController extends HttpServlet {
             String registroParam = request.getParameter("registro");
             int vehiculoId = Integer.parseInt(registroParam);
             session.setAttribute("idVehiculo", vehiculoId); // Establecer el idVehiculo en la sesión
-            Vehiculo vehiculo = vehiculoDAO.getVehiculoById(vehiculoId);
-            request.setAttribute("vehiculo", vehiculo);
             request.getRequestDispatcher("JSP/editarVehiculo.jsp").forward(request, response);
 
         } else if ("guardar".equals(action)) {

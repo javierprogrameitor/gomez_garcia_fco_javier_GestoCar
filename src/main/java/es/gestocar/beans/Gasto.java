@@ -5,7 +5,8 @@ import java.util.Date;
 
 public class Gasto {
     
-    private Short idGasto;
+    private int idGasto;
+    private int idVehiculo;
     private Vehiculo vehiculo;
     private String concepto;
     private Date fechaGasto;
@@ -14,14 +15,25 @@ public class Gasto {
     private String establecimiento;
     private String kilometros;
 
-    public Short getIdGasto() {
+    public int getIdGasto() {
         return idGasto;
     }
 
-    public void setIdGasto(Short idGasto) {
+    public void setIdGasto(int idGasto) {
         this.idGasto = idGasto;
     }
 
+    public int getIdVehiculo() {
+        return idVehiculo;
+    }
+
+    public void setIdVehiculo(int idVehiculo) {
+        this.idVehiculo = idVehiculo;
+    }
+
+    
+    
+    
     public Vehiculo getVehiculo() {
         return vehiculo;
     }

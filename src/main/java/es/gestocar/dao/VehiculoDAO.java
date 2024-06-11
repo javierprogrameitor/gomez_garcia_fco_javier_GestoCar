@@ -167,12 +167,29 @@ public class VehiculoDAO implements IVehiculoDAO {
             closeConnection();
         }
     }
-
+    
     @Override
-    public Vehiculo getVehiculoById(int id) {
-
-        return null;
+    public int getLastInsertedId() {
+        int id = 0;
+        String sql = "SELECT LAST_INSERT_ID()";
+        try {
+            conexion = ConnectionFactory.getConnection();
+            PreparedStatement preparada = conexion.prepareStatement(sql);
+            ResultSet rs = preparada.executeQuery();
+            if (rs.next()) {
+                id = rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            // ... manejo de excepciones ...
+        } finally {
+            closeConnection();
+        }
+        return id;
     }
+
+    
+
+ 
 
     @Override
     public void closeConnection() {

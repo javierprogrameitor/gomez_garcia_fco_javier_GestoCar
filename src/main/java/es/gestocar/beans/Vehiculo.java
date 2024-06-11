@@ -9,6 +9,7 @@ public class Vehiculo {
     private int usuarioId;
     private String marca;
     private String modelo;
+    private Vehiculo vehiculo;
 
     public enum Motor {
         GASOLINA, GASOIL, ELECTRICO
@@ -42,6 +43,13 @@ public class Vehiculo {
         this.usuarioId = usuarioId;
     }
 
+    public Vehiculo getVehiculo() {
+        return vehiculo;
+    }
+
+    public void setVehiculo(Vehiculo vehiculo) {
+        this.vehiculo = vehiculo;
+    }
 
 
     public String getMarca() {

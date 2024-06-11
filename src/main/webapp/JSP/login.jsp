@@ -44,7 +44,7 @@
         <title>Login</title>
     </head>
 
-    <body class="bg-custom-green">
+    <body class="bg-custom-green font-bobby-jones h-auto">
         <c:import url="../INC/nav.jsp"/> 
         <c:if test="${usuarioCreado}">
             <div id="modal" class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">

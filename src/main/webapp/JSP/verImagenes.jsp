@@ -44,7 +44,7 @@
         </style>
         <title>VisualizarImagenes</title>
     </head>
-<body class="bg-custom-green font-bobby-jones h-full">
+<body class="bg-custom-green font-bobby-jones h-full h-auto">
     <c:import url="../INC/nav.jsp"/>
     <div class="flex flex-col items-center justify-center p-4 mt-18 mb-10">
         <div class="overflow-x-auto w-full max-w-7xl">
