@@ -25,7 +25,9 @@
                     },
                 }
             }
-          
+            function closeModal() {
+                document.getElementById('modal').style.display = 'none';
+            }
         </script>
         <style>
             @font-face {
@@ -41,14 +43,16 @@
             .font-bobby-jones {
                 font-family: 'Bobby-Jones', sans-serif;
             }
+
         </style>
-        <title>Lista de Vehículos</title>
+        <title>SubirImagenes</title>
     </head>
     <body class="bg-custom-green font-bobby-jones h-auto">
         <c:import url="../INC/nav.jsp"/> 
-        <div class="flex flex-col items-center justify-center p-4 mt-18 mb-10">
-            <div class="overflow-x-auto w-full max-w-7xl">
-                <h1 class="flex items-center justify-center text-shadow-black text-green-700 text-3xl font-black">Elige uno de tus Veh&iacute;culos para modificarlo</h1>
+          <div class="flex flex-col items-center justify-center p-4 mt-18 mb-10">
+        <div class="overflow-x-auto w-full max-w-7xl">
+            <h1 class="flex items-center justify-center text-shadow-black text-green-700 text-3xl font-black">Seleccione un vehículo para subir sus Imágenes</h1>
+            <form action="imagenesVehiculoController" method="post" enctype="multipart/form-data">
                 <table class="table-auto bg-custom-gray w-full text-left border-collapse">
                     <thead class="bg-gray-200">
                         <tr>
@@ -62,43 +66,47 @@
                             <th class="px-4 py-2">Color</th>
                             <th class="px-4 py-2">Fecha Compra</th>
                             <th class="px-4 py-2">Fecha Venta</th>
-                            <th class="px-4 py-2">Precio Compra</th>            
+                            <th class="px-4 py-2">Precio Compra</th>
                             <th class="px-4 py-2">Precio Venta</th>
                         </tr>
                     </thead>
-                    <form action="modificarVehiculoController" method="post">
-                        <tbody>
-                            <c:forEach items="${vehiculos}" var="vehiculo">
-                                <tr class="bg-white border-b">
-                                    <td class="bg-green-700 hover:bg-green-600 centro"><input type="radio" name="registro" value="${vehiculo.idVehiculo}"/></td>
-                                    <td class="px-4 py-2"><c:out value="${vehiculo.marca}"/></td>
-                                    <td class="px-4 py-2"><c:out value="${vehiculo.modelo}"/></td>
-                                    <td class="px-4 py-2"><c:out value="${vehiculo.motor}"/></td>
-                                    <td class="px-4 py-2"><c:out value="${vehiculo.matricula}"/></td>
-                                    <td class="px-4 py-2"><c:out value="${vehiculo.cilindrada}"/></td>
-                                    <td class="px-4 py-2"><c:out value="${vehiculo.caballos}"/></td>
-                                    <td class="px-4 py-2"><c:out value="${vehiculo.color}"/></td>
-                                    <td class="px-4 py-2"><c:out value="${vehiculo.fechaCompra}"/></td>
-                                    <td class="px-4 py-2"><c:out value="${vehiculo.fechaVenta}"/></td>
-                                    <td class="px-4 py-2"><c:out value="${vehiculo.preciocompra}"/></td>
-                                    <td class="px-4 py-2"><c:out value="${vehiculo.precioventa}"/></td>
-                                </tr>
-                            </c:forEach>
-                        </tbody>
+                    <tbody>
+                        <c:forEach items="${vehiculos}" var="vehiculo">
+                            <tr class="bg-white border-b">
+                                <td class="bg-green-700 hover:bg-green-600 centro">
+                                    <input type="radio" name="seleccion" value="${vehiculo.idVehiculo}"/>
+                                </td>
+                                <td class="px-4 py-2"><c:out value="${vehiculo.marca}"/></td>
+                                <td class="px-4 py-2"><c:out value="${vehiculo.modelo}"/></td>
+                                <td class="px-4 py-2"><c:out value="${vehiculo.motor}"/></td>
+                                <td class="px-4 py-2"><c:out value="${vehiculo.matricula}"/></td>
+                                <td class="px-4 py-2"><c:out value="${vehiculo.cilindrada}"/></td>
+                                <td class="px-4 py-2"><c:out value="${vehiculo.caballos}"/></td>
+                                <td class="px-4 py-2"><c:out value="${vehiculo.color}"/></td>
+                                <td class="px-4 py-2"><c:out value="${vehiculo.fechaCompra}"/></td>
+                                <td class="px-4 py-2"><c:out value="${vehiculo.fechaVenta}"/></td>
+                                <td class="px-4 py-2"><c:out value="${vehiculo.preciocompra}"/></td>
+                                <td class="px-4 py-2"><c:out value="${vehiculo.precioventa}"/></td>
+                            </tr>
+                        </c:forEach>
+                        <tr>
+                            <td colspan="12" class="text-center">
+                                <input type="file" name="imgCar"/>
+                                <button type="submit" name="boton" value="subir" class="bg-green-700 hover:bg-green-600 text-shadow-black font-bold py-2 px-4 rounded focus:outline-none mt-4">Subir Imagen</button>
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
-                <div class="flex justify-center space-x-7 mt-7">
-                    <button type="submit"  name="boton" value="modificar" 
-                            class="flex flex-col items-center justify-center  bg-green-700 hover:bg-green-600 text-shadow-black font-bold py-2 px-4 rounded focus:outline-none m-4">
-                        Modificar</button>
-                    </form>
-                    <form action="<c:out value='${contextPath}' />/ReturnUsu" method="post"> 
-                        <button type="submit" class="bg-green-700 hover:bg-green-600 text-shadow-black font-bold py-2 px-4 rounded focus:outline-none mt-4">
-                            SALIR
-                        </button>
-                    </form>
-                </div>
+            </form>
+            <div class="flex justify-center space-x-7 mt-7">
+                <form action="<c:out value='${contextPath}' />/ReturnUsu" method="post"> 
+                    <button type="submit" class="bg-green-700 hover:bg-green-600 text-shadow-black font-bold py-2 px-4 rounded focus:outline-none mt-4">
+                        SALIR
+                    </button>
+                </form>
             </div>
         </div>
+    </div>
         <c:import url="/INC/footer.jsp"/> 
         <div>
             <hr class="w-full border-t-1 border-white">

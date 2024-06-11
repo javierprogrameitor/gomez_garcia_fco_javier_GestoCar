@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,46 +37,50 @@ public class eliminarVehiculoController extends HttpServlet {
         converter.setPattern("yyyy-MM-dd");
         ConvertUtils.register(converter, Date.class);
     }
-    
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         HttpSession session = request.getSession();
-        
+
         int usuarioId = (int) session.getAttribute("usuarioId");
         String action = request.getParameter("boton");
-        
+
         DAOFactory daof = DAOFactory.getDAOFactory();
         IVehiculoDAO vehiculoDAO = daof.getVehiculoDAO();
-        
+
         if ("eliminarVehiculo".equals(action)) {
             List<Vehiculo> vehiculos = vehiculoDAO.getVehiculosByUsuarioId(usuarioId);
             for (Vehiculo vehiculo : vehiculos) {
                 System.out.println("Vehiculo ID: " + vehiculo.getIdVehiculo());
             }
-            
+      
+
             request.setAttribute("vehiculos", vehiculos);
             request.getRequestDispatcher("JSP/eliminarVehiculos.jsp").forward(request, response);
-            
+
         } else if ("eliminar".equals(action)) {
-            
-           String idVehiculoStr = request.getParameter("seleccion");
+
+            String idVehiculoStr = request.getParameter("seleccion");
+            boolean eliminacionExitosa = false;
+
             if (idVehiculoStr != null && !idVehiculoStr.isEmpty()) {
                 int idVehiculo = Integer.parseInt(idVehiculoStr);
                 vehiculoDAO.delete(idVehiculo);
+                eliminacionExitosa = true;
 
-                // Refrescar la lista de vehículos y volver a mostrar la página de usuario
                 List<Vehiculo> vehiculos = vehiculoDAO.getVehiculosByUsuarioId(usuarioId);
                 request.setAttribute("vehiculos", vehiculos);
-                request.getRequestDispatcher("JSP/usuario.jsp").forward(request, response);
+                request.setAttribute("eliminacionExitosa", eliminacionExitosa);
+                request.getRequestDispatcher("JSP/eliminarVehiculos.jsp").forward(request, response);
+
             } else {
-                // Manejar el caso en que no se haya seleccionado ningún vehículo
                 List<Vehiculo> vehiculos = vehiculoDAO.getVehiculosByUsuarioId(usuarioId);
                 request.setAttribute("vehiculos", vehiculos);
-                request.setAttribute("error", "Debe seleccionar un vehículo para eliminar.");
                 request.getRequestDispatcher("JSP/eliminarVehiculos.jsp").forward(request, response);
             }
         }
     }
 }
+

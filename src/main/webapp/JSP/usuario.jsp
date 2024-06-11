@@ -41,7 +41,7 @@
         <title>Usuario</title>
     </head>
     <body class="bg-custom-green font-bobby-jones">
-      <c:import url="../INC/nav.jsp"/> 
+        <c:import url="../INC/nav.jsp"/> 
 
         <div class="flex flex-grow flex-inline p-4 mt-18 mb-10">
             <!-- Primer Bloque: Crear Vehículo -->
@@ -51,7 +51,7 @@
                     <hr class="w-full border-t-1 border-white mt-4">
                 </div>
                 <div class="flex justify-center text-shadow-black mt-4">
-                    <form action="<c:out value='${contextPath}' />/crearVehiculoController" method="post"> 
+                    <form action="<c:out value='${contextPath}' />/crearVehiculoController" method="post" > 
                         <input type="hidden" id="idusuario" name="idusuario" value="${sessionScope.usuarioId}"/>
                         <!-- Marca -->
                         <label class="block text-green-600 text-lg font-bold mb-2 mt-4">* Marca : </label>
@@ -105,7 +105,7 @@
             </div>
 
             <!-- Segundo Bloque: Visualizar, Modificar, Eliminar Vehículo -->
-            <div class="bg-custom-gray rounded-lg p-4 md:p-4 mb-6 form-border text-shadow-black w-full max-w-xs ml-4">
+            <div class="bg-custom-gray rounded-lg p-4 md:p-4 mb-6 form-border text-shadow-black  ml-4">
                 <div>
                     <hr class="w-full border-t-1 border-white mt-20 mb-8">
                 </div>
@@ -136,23 +136,49 @@
                         </button>
                     </form>
                 </div>
-                         <!-- Boton Salir -->
+
+                <!-- Subir Imagenes -->
+
+                <div class="flex justify-center text-shadow-black m-4">
+                    <form action="<c:out value='${contextPath}' />/imagenesVehiculoController" method="post">            
+                        <div class="flex flex items center justify-center" >      
+                            <button type="submit" value="subirImagenes" name="boton" class=" bg-green-700 hover:bg-green-600 text-shadow-black font-bold py-2 px-4 rounded focus:outline-none mt-4 text-shadow-black">
+                                SUBIR IMAGENES
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+
+
+
+                <!-- Boton Salir -->
                 <div class="flex justify-center text-shadow-black mt-4">
                     <form action="<c:out value='${contextPath}' />/Return" method="post"> 
                         <button type="submit" class="bg-green-700 hover:bg-green-600 text-shadow-black font-bold py-2 px-4 rounded focus:outline-none mt-4 text-shadow-black">
-                           SALIR
+                            SALIR
                         </button>
                     </form>
                 </div>  
-                        
+
 
                 <div>
                     <hr class="w-full border-t-1 border-white mt-4">
                 </div>
             </div>
-        </div>
 
-               <c:import url="/INC/footer.jsp"/> 
+            <div>
+                <hr class="w-full border-t-1 border-white mt-4">
+            </div>
+            <!-- Tercer Bloque gastos-->
+            <div class="bg-custom-gray rounded-lg p-4 md:p-4 mb-6 form-border text-shadow-black w-full max-w-xs ml-4">   
+
+            </div>
+            <div>
+                <hr class="w-full border-t-1 border-white mt-4">
+            </div>
+        </div>
+        <c:import url="/INC/footer.jsp"/> 
         <div>
             <hr class="w-full border-t-1 border-white">
         </div>

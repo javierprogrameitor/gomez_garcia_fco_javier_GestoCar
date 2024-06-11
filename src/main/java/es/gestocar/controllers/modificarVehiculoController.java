@@ -6,10 +6,10 @@ import es.gestocar.dao.MotorConverter;
 import es.gestocar.daofactory.DAOFactory;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.util.Arrays;
+
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -52,9 +52,6 @@ public class modificarVehiculoController extends HttpServlet {
 
         if ("modificarVehiculo".equals(action)) {
             List<Vehiculo> vehiculos = vehiculoDAO.getVehiculosByUsuarioId(usuarioId);
-            for (Vehiculo vehiculo : vehiculos) {
-                System.out.println("Vehiculo ID: " + vehiculo.getIdVehiculo());
-            }
 
             request.setAttribute("vehiculos", vehiculos);
             request.getRequestDispatcher("JSP/modificarVehiculos.jsp").forward(request, response);
@@ -72,25 +69,21 @@ public class modificarVehiculoController extends HttpServlet {
             try {
                 Vehiculo vehiculo = new Vehiculo();
                 int idVehiculo = (int) session.getAttribute("idVehiculo");  //
-                
-                // Debug: Imprimir el mapa de parámetros
-                Map<String, String[]> parameterMap = request.getParameterMap();
-                for (Map.Entry<String, String[]> entry : parameterMap.entrySet()) {
-                    String key = entry.getKey();
-                    String[] value = entry.getValue();
-                    System.out.println(key + " : " + Arrays.toString(value));
-                }
+                 boolean modificacionExitosa = false;
 
                 vehiculo.setIdVehiculo(idVehiculo);
                 BeanUtils.populate(vehiculo, request.getParameterMap());
 
                 vehiculo.setUsuarioId(usuarioId); // Seteamos el id del usuario en el vehiculo
                 vehiculoDAO.update(vehiculo);
+                
+                modificacionExitosa = true;
 
                 // Refrescar la lista de vehículos y volver a mostrar la página de modificar
                 List<Vehiculo> vehiculos = vehiculoDAO.getVehiculosByUsuarioId(usuarioId);
                 request.setAttribute("vehiculos", vehiculos);
-                request.getRequestDispatcher("JSP/modificarVehiculos.jsp").forward(request, response);
+                 request.setAttribute("modificacionExitosa", modificacionExitosa);
+                request.getRequestDispatcher("JSP/editarVehiculo.jsp").forward(request, response);
 
             } catch (IllegalAccessException | InvocationTargetException ex) {
                 Logger.getLogger(modificarVehiculoController.class.getName()).log(Level.SEVERE, null, ex);

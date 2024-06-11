@@ -25,6 +25,9 @@
                     },
                 }
             }
+            function closeModal() {
+                document.getElementById('modal').style.display = 'none';
+            }
         </script>
         <style>
             @font-face {
@@ -45,6 +48,26 @@
     </head>
     <body class="bg-custom-green font-bobby-jones h-auto">
         <c:import url="../INC/nav.jsp"/> 
+        <c:if test="${modificacionExitosa}">
+            <div id="modal" class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+                    <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+                    <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                        <div class="bg-green-600 p-4">
+                            <h3 class="text-lg leading-6 font-medium text-white" id="modal-title">
+                                Vehiculo modificado con éxito
+                            </h3>
+                        </div>
+                        <div class="bg-white px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                            <button type="button" onclick="window.location.href = '${contextPath}/JSP/usuario.jsp'" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm">
+                                Volver
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </c:if>
         <div class="m-3">
             <div class="max-w-lg mx-auto bg-white p-8 rounded shadow">
                 <h1 class="text-2xl font-bold mb-6 text-center">Editar Vehículo</h1>
@@ -88,7 +111,7 @@
                     <!-- Color-->
                     <div class="mb-4">
                         <label for="color" class="block text-gray-700 font-bold mb-2">Color:</label>
-                        <input type="text" id="color" name="color" value="${vehiculo.color}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                        <input type="color" id="color" name="color" value="${vehiculo.color}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                     </div>
                     <!-- fechaCompra-->
                     <div class="mb-4">
@@ -111,10 +134,10 @@
                         <input type="text" id="precioventa" name="precioventa" value="${vehiculo.precioventa}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                     </div>
                     <!-- ... -->
-                    <div class="flex items-center justify-between">
+                    <div class="flex items-center justify-center">
                         <button type="submit" name="boton" value="guardar"
                                 class="bg-green-700 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                            Guardar</button>
+                            MODIFICAR</button>
                     </div>
                 </form>
             </div>
