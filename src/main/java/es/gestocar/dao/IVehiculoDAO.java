@@ -41,13 +41,25 @@ public interface IVehiculoDAO {
      */
     public int getLastInsertedId();
 
+    
+    /**
+     * 
+     * @param idVehiculo
+     * @return 
+     */
+    public boolean deleteVehiculoID(int idVehiculo);
     /**
      * Elimina un vehiculo y sus fotos asociadas
      *
      * @param vehiculo
      */
     public void delete(int idVehiculo);
-
+    
+    /**
+     * 
+     * @return 
+     */
+    public List<Vehiculo> getVehiculos();
     /**
      * Abandona el hilo de la conexión a la base de datos
      */

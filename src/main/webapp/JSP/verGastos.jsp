@@ -25,6 +25,9 @@
                     },
                 }
             }
+            function closeModal() {
+                document.getElementById('modal').style.display = 'none';
+            }
         </script>
         <style>
             @font-face {
@@ -40,36 +43,23 @@
             .font-bobby-jones {
                 font-family: 'Bobby-Jones', sans-serif;
             }
-
         </style>
-        <title>VisualizarImagenes</title>
+        <title>CrearGasto</title>
     </head>
-<body class="bg-custom-green font-bobby-jones min-h-screen">
-    <c:import url="../INC/nav.jsp"/>
-    <div class="flex flex-col items-center justify-center p-4 mt-18 mb-10">
-        <div class="overflow-x-auto w-full max-w-7xl">
-            <h1 class="flex items-center justify-center text-shadow-black text-green-700 text-3xl font-black">Imágenes del Vehículo</h1>
-            <div class="flex justify-center flex-wrap">
-                <c:if test="${not empty fotos}">
-                    <c:forEach items="${fotos}" var="foto">
-                        <div class="m-2 w-64 h-64">
-                            <img src="${pageContext.request.contextPath}/IMAGENES/${foto.foto}"/>
-                        </div>
-                    </c:forEach>
-                </c:if>
-            </div>
-            <div class="flex justify-center space-x-7 mt-7">
-                <form action="<c:out value='${contextPath}' />/ReturnUsu" method="post"> 
-                    <button type="submit" class="bg-green-700 hover:bg-green-600 text-shadow-black font-bold py-2 px-4 rounded focus:outline-none mt-4">
-                        SALIR
-                    </button>
-                </form>
-            </div>
-        </div>
-    </div>
+    <body class="bg-custom-green font-bobby-jones min-h-screen">
+        <c:import url="../INC/nav.jsp"/> 
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         <c:import url="/INC/footer.jsp"/> 
-        <div>
-            <hr class="w-full border-t-1 border-white">
-        </div>
     </body>
 </html>

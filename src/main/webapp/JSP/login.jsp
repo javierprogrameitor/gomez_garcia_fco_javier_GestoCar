@@ -77,22 +77,22 @@
                     <label class="block text-green-600 text-lg font-bold mb-2">Nombre:</label>
                     <input type="text" id="nombre" name="nombre" 
                            class="border border-green-600 rounded w-full py-2 px-3 leading-tight focus:outline-none text-shadow-black "
-                           required />
+                           />
                     <!----Apellidos------------------------------------------------->
                     <label for="apellidos" class="block text-green-600 text-lg font-bold mb-2 mt-4">Apellidos:</label>
                     <input type="text" id="apellidos" name="apellidos"  
                            class="border border-green-600 rounded w-full py-2 px-3 leading-tight focus:outline-none text-shadow-black"
-                           required />
+                           />
                     <!----Email------------------------------------------------->
                     <label for="email" class="block text-green-600 text-lg font-bold mb-2 mt-4">Email:</label>
                     <input type="email" id="email" name="email" 
                            class="border border-green-600 rounded w-full py-2 px-3 leading-tight focus:outline-none text-shadow-black"
-                           required />
+                            />
                     <!----Password------------------------------------------------->
                     <label for="password" class="block text-green-600 text-lg font-bold mb-2 mt-4">Password :</label>
                     <input type="password" id="password" name="password"  
                            class="border border-green-600 rounded w-full py-2 px-3  leading-tight focus:outline-none text-shadow-black"
-                           required />
+                            />
                     <!----DNI------------------------------------------------->
                     <label for="dni" class="block text-green-600 text-lg font-bold mb-2 mt-4">DNI :</label>
                     <input type="text" id="dni" name="dni" 
@@ -110,9 +110,10 @@
                 </form>
             </div>
         </div>
-               <c:import url="/INC/footer.jsp"/> 
+        <c:import url="/INC/footer.jsp"/> 
         <div>
             <hr class="w-full border-t-1 border-white">
         </div>
+
     </body>
 </html>

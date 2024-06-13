@@ -48,7 +48,13 @@ public interface IUsuarioDAO {
      * @param usuario Objeto usuario que se pretende eliminar
      */
     public void delete(Usuario usuario);
-    
+    /**
+     * 
+     * @param usuarioId
+     * @param campoBaja
+     * @return 
+     */
+      public boolean updateUsuarioCampoBaja(int idUsuario, boolean estado);
     /**
      * Abandona el hilo de la conexión a la base de datos
      */

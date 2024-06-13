@@ -56,8 +56,10 @@ public class crearVehiculoController extends HttpServlet {
                     error = true;
                 } else {
                     // Obtener el ID del vehículo recién creado
-                    int vehiculoId = adao.getLastInsertedId(); // Suponiendo que tienes un método para obtener el último ID insertado
+                    int vehiculoId = adao.getLastInsertedId(); 
                     session.setAttribute("vehiculoId", vehiculoId); // Establecer el id del vehículo en la sesión
+                    request.setAttribute("vehiculoCreado", true);
+                
                 }
             } catch (IllegalAccessException | InvocationTargetException ex) {
                 Logger.getLogger(crearVehiculoController.class.getName()).log(Level.SEVERE, null, ex);

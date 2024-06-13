@@ -146,7 +146,7 @@ public class VehiculoDAO implements IVehiculoDAO {
 
         String sql = "DELETE FROM vehiculos WHERE idVehiculo=?";
 
-        try (Connection conexion = ConnectionFactory.getConnection();
+        try (Connection conexion = ConnectionFactory.getConnection(); 
                 PreparedStatement preparada = conexion.prepareStatement(sql)) {
 
             conexion.setAutoCommit(false);
@@ -167,7 +167,69 @@ public class VehiculoDAO implements IVehiculoDAO {
             closeConnection();
         }
     }
-    
+
+    @Override
+    public boolean deleteVehiculoID(int idVehiculo) {
+        boolean exito = false;
+        String sql = "DELETE FROM vehiculos WHERE idvehiculo = ?";
+
+        try (Connection conexion = ConnectionFactory.getConnection();
+                PreparedStatement ps = conexion.prepareStatement(sql)) {
+
+            ps.setInt(1, idVehiculo);
+
+            int filasEliminadas = ps.executeUpdate();
+            if (filasEliminadas > 0) {
+                exito = true;
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace(); // Manejo básico de la excepción, se debe mejorar en producción
+        }
+
+        return exito;
+    }
+
+    @Override
+    public List<Vehiculo> getVehiculos() {
+        List<Vehiculo> vehiculos = new ArrayList<>();
+        String sql = "SELECT idvehiculo, marca, modelo, motor, matricula, cilindrada, caballos, color, fechacompra, fechaventa, preciocompra, precioventa FROM vehiculos";
+
+        try {
+            Connection conexion = ConnectionFactory.getConnection();
+            PreparedStatement preparada = conexion.prepareStatement(sql);
+            ResultSet rs = preparada.executeQuery();
+            MotorConverter motorConverter = new MotorConverter();
+            while (rs.next()) {
+
+                Vehiculo vehiculo = new Vehiculo();
+                vehiculo.setIdVehiculo(rs.getInt("idvehiculo"));
+                vehiculo.setMarca(rs.getString("marca"));
+                vehiculo.setModelo(rs.getString("modelo"));
+                vehiculo.setMotor((Vehiculo.Motor) motorConverter.convert(Vehiculo.Motor.class, rs.getString("motor")));
+                vehiculo.setMatricula(rs.getString("matricula"));
+                vehiculo.setCilindrada(rs.getString("cilindrada"));
+                vehiculo.setCaballos(rs.getString("caballos"));
+                vehiculo.setColor(rs.getString("color"));
+                vehiculo.setFechaCompra(rs.getDate("fechacompra"));
+                vehiculo.setFechaVenta(rs.getDate("fechaventa"));
+                vehiculo.setPreciocompra(rs.getDouble("preciocompra"));
+                vehiculo.setPrecioventa(rs.getDouble("precioventa"));
+
+                vehiculos.add(vehiculo);
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(VehiculoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            closeConnection();
+        }
+
+        return vehiculos;
+    }
+
+
     @Override
     public int getLastInsertedId() {
         int id = 0;
@@ -186,10 +248,6 @@ public class VehiculoDAO implements IVehiculoDAO {
         }
         return id;
     }
-
-    
-
- 
 
     @Override
     public void closeConnection() {

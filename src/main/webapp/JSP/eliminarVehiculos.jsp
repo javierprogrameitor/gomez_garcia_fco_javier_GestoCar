@@ -47,7 +47,7 @@
         </style>
         <title>EliminarVehículos</title>
     </head>
-    <body class="bg-custom-green font-bobby-jones h-auto">
+    <body class="bg-custom-green font-bobby-jones min-h-screen">
         <c:import url="../INC/nav.jsp"/> 
         <c:if test="${eliminacionExitosa}">
             <div id="modal" class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
@@ -93,7 +93,7 @@
                         <tbody>
                             <c:forEach items="${vehiculos}" var="vehiculo">
                                 <tr class="bg-white border-b">
-                                    <td class="bg-green-700 hover:bg-green-600 centro"><input type="radio" name="seleccion" value="${vehiculo.idVehiculo}"/></td>
+                                    <td class="bg-green-700 hover:bg-green-600 text-center"><input type="radio" name="seleccion" value="${vehiculo.idVehiculo}"/></td>
                                     <td class="px-4 py-2"><c:out value="${vehiculo.marca}"/></td>
                                     <td class="px-4 py-2"><c:out value="${vehiculo.modelo}"/></td>
                                     <td class="px-4 py-2"><c:out value="${vehiculo.motor}"/></td>

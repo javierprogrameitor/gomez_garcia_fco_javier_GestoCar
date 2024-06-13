@@ -43,7 +43,7 @@
         </style>
         <title>Gastos Vehiculo</title>
     </head>
-    <body class="bg-custom-green font-bobby-jones h-auto">
+    <body class="bg-custom-green font-bobby-jones h-auto h-full">
         <c:import url="../INC/nav.jsp"/> 
 
         <!-- Lista de Vehículos -->

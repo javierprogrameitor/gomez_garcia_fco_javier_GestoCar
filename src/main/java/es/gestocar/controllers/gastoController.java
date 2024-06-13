@@ -49,12 +49,12 @@ public class gastoController extends HttpServlet {
             request.setAttribute("vehiculos", vehiculos);
             request.getRequestDispatcher("JSP/listarGasto.jsp").forward(request, response);
         } else if ("listarGasto".equals(action)) {
-            
-           int idvehiculo = Integer.parseInt(request.getParameter("idvehiculo"));
+
+            int idvehiculo = Integer.parseInt(request.getParameter("idvehiculo"));
             request.setAttribute("idvehiculo", idvehiculo); // Pasar el id del vehículo a la siguiente página
             request.getRequestDispatcher("JSP/crearGasto.jsp").forward(request, response);
-        }else if ("crearGasto".equals(action)) {
-            
+        } else if ("crearGasto".equals(action)) {
+
             Gasto gasto = new Gasto();
             Boolean error = false;
 
@@ -65,11 +65,33 @@ public class gastoController extends HttpServlet {
             converter.setPattern("yyyy-MM-dd");
             ConvertUtils.register(converter, Date.class);
 
-            try {
-                BeanUtils.populate(gasto, request.getParameterMap());
-                gasto.setIdVehiculo(Integer.parseInt(request.getParameter("idvehiculo")));
+            // Validar idvehiculo
+            String idVehiculoStr = request.getParameter("idvehiculo");
+            if (idVehiculoStr == null || idVehiculoStr.isEmpty()) {
+                // Manejo del error, por ejemplo, redirigir de nuevo a la página anterior con un mensaje de error
+                // Vuelvo a mostrar la lista porque pierdo el id . Lo intenté poner en session pero imposible....
+                List<Vehiculo> vehiculos = vehiculoDAO.getVehiculosByUsuarioId(usuarioId);
+                request.setAttribute("vehiculos", vehiculos);
+                request.getRequestDispatcher("JSP/listarGasto.jsp").forward(request, response);
+                return; // Importante salir del método para evitar continuar con el proceso
+            }
 
-                if (!adao.add(gasto)) {
+            try {
+
+                int idvehiculo = Integer.parseInt(idVehiculoStr);
+                BeanUtils.populate(gasto, request.getParameterMap());
+                gasto.setIdVehiculo(idvehiculo);
+
+                // Validar campos obligatorios
+                if (gasto.getConcepto() == null || gasto.getConcepto().isEmpty()
+                        || gasto.getFechaGasto() == null
+                        || gasto.getDescripcion() == null || gasto.getDescripcion().isEmpty()
+                        || gasto.getImporte() == 0
+                        || gasto.getEstablecimiento() == null || gasto.getEstablecimiento().isEmpty()
+                        || gasto.getKilometros() == null || gasto.getKilometros().isEmpty()) {
+                    error = true;
+                } else if (!adao.add(gasto)) {
+
                     error = true;
                 }
             } catch (IllegalAccessException | InvocationTargetException ex) {
@@ -78,7 +100,11 @@ public class gastoController extends HttpServlet {
             }
 
             if (error) {
-                request.setAttribute("errorMessage", "Error al crear el gasto.");
+
+                url = "JSP/crearGasto.jsp";  // Volver a la misma página en caso de error
+            } else {
+                request.setAttribute("gastoCreado", true);
+                url = "JSP/crearGasto.jsp";
             }
 
             request.getRequestDispatcher(url).forward(request, response);

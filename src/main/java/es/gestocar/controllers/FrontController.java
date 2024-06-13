@@ -31,10 +31,11 @@ public class FrontController extends HttpServlet {
 
                 case "administrador":
 
-                    url = "JSP/administrador.jsp";
+                    url = "JSP/logeado.jsp";
                     break;
 
                 case "login":
+                    
 
                     url = "JSP/login.jsp";
                     break;

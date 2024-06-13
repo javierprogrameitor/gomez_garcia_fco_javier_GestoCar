@@ -73,12 +73,18 @@ CREATE TABLE `usuarios` (
   `apellidos` varchar(30) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `dni` varchar(8) DEFAULT NULL,
+  `dni` varchar(9) DEFAULT NULL,
   `campobaja` char(1) NOT NULL DEFAULT 'F',
   PRIMARY KEY (`idusuarios`),
   UNIQUE KEY `EMAIL_UNIQUE` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+LOCK TABLES `usuarios` WRITE;
+/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+INSERT INTO `usuarios` VALUES (1,'admin','gestor','admin@iesalbarregas.es','21232f297a57a5a743894a0e4a801fc3','9292029B','F');
+/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `vehiculos`

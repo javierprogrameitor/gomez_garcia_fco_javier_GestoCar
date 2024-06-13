@@ -51,15 +51,16 @@
                         <hr class="w-full border-t-1 border-white mt-4">
                     </div>
 
+                   
                     <!----Email------------------------------------------------->
-                    <label  class="block text-green-600 text-lg font-bold mb-2 mt-4">Nombre</label>
-                    <input type="text" id="nombre" name="nombre"   
-                           class="border border-green-600 rounded w-full py-2 px-3 leading-tight focus:outline-none text-shadow-black"
-                           required />
-                    <!----Password------------------------------------------------->
                     <label  class="block text-green-600 text-lg font-bold mb-2 mt-4">Email :</label>
                     <input type="email" id="email" name="email"  
                            class="border border-green-600 rounded w-full py-2 px-3  leading-tight focus:outline-none text-shadow-black"
+                           required />
+                     <!----Password------------------------------------------------->
+                    <label  class="block text-green-600 text-lg font-bold mb-2 mt-4">Password</label>
+                    <input type="text" id="password" name="password"   
+                           class="border border-green-600 rounded w-full py-2 px-3 leading-tight focus:outline-none text-shadow-black"
                            required />
 
                     <!----Boton------------------------------------------------->

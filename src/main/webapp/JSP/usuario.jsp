@@ -22,6 +22,9 @@
                     },
                 }
             }
+            function closeModal() {
+                document.getElementById('modal').style.display = 'none';
+            }
         </script>
         <style>
             @font-face {
@@ -40,13 +43,34 @@
         </style>
         <title>Usuario</title>
     </head>
-    <body class="bg-custom-green font-bobby-jones h-auto">
+    <body class="bg-custom-green font-bobby-jones min-h-screen">
         <c:import url="../INC/nav.jsp"/> 
+        <c:if test="${vehiculoCreado}">
+            <div id="modal" class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+                    <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+                    <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                        <div class="bg-green-600 p-4">
+                            <h3 class="text-lg leading-6 font-medium text-white" id="modal-title">
+                                Vehiculo creado con éxito
+                            </h3>
+                        </div>
+                        <div class="bg-white px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                            <button type="button" onclick="window.location.href = '${contextPath}/JSP/usuario.jsp'" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm">
+                                Volver
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </c:if>
         <div class="container mx-auto p-4">
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3">
                 <!-- Primer Bloque: Crear Vehículo -->
-                <div class="bg-custom-gray rounded-lg p-6 md:p-8 mb-6 form-border text-shadow-black w-full max-w-md">
-                    <label class="block text-green-600 text-2xl font-black mb-2 ">Introduce tu Veh&iacute;culo :</label>
+                <div class="bg-custom-gray rounded-lg p-4 md:p-4 mb-6 form-border text-shadow-black  ml-4">
+
+                    <label class="block text-green-600 text-2xl font-black mt-4">Introduce tu Veh&iacute;culo :</label>
                     <div>
                         <hr class="w-full border-t-1 border-white mt-4">
                     </div>
@@ -166,15 +190,14 @@
                         <hr class="w-full border-t-1 border-white mt-4">
                     </div>
                 </div>
-
-              
                 <!--<!-- Tercer bloque -->
-                <div class="bg-custom-gray rounded-lg p-4 md:p-4 mb-6 form-border text-shadow-black w-full max-w-xs ml-4"> 
+                <div class="bg-custom-gray rounded-lg p-4 md:p-4 mb-6 form-border text-shadow-black  ml-4">
+
                     <label class="block text-green-600 text-2xl font-black mb-2 mt-4">Gastos en su Vehculo:</label>
                     <div>
                         <hr class="w-full border-t-1 border-white mt-4">
                     </div>
-                       <!-- Crear Gastos -->
+                    <!-- Crear Gastos -->
                     <div class="flex justify-center text-shadow-black mt-4">
                         <form action="<c:out value='${contextPath}' />/gastoController" method="post"> 
                             <button type="submit" value="insertarGasto" name="boton" class="bg-green-700 hover:bg-green-600 text-shadow-black font-bold py-2 px-4 rounded focus:outline-none mt-4 text-shadow-black">
@@ -182,8 +205,8 @@
                             </button>
                         </form>
                     </div>
-                    
-                    
+
+
                     <!-- Visualizar Gastos -->
                     <div class="flex justify-center text-shadow-black mt-4">
                         <form action="<c:out value='${contextPath}' />/visualizarGastoController" method="post"> 
@@ -210,6 +233,16 @@
                             </button>
                         </form>
                     </div>
+
+                    <!-- Boton Salir -->
+                    <div class="flex justify-center text-shadow-black mt-4">
+                        <form action="<c:out value='${contextPath}' />/Return" method="post"> 
+                            <button type="submit" class="bg-green-700 hover:bg-green-600 text-shadow-black font-bold py-2 px-4 rounded focus:outline-none mt-4 text-shadow-black">
+                                SALIR
+                            </button>
+                        </form>
+                    </div>  
+
                     <div>
                         <hr class="w-full border-t-1 border-white mt-4">
                     </div>

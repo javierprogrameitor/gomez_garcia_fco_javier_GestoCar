@@ -44,12 +44,12 @@
         </style>
         <title>Lista de Vehículos</title>
     </head>
-    <body class="bg-custom-green font-bobby-jones h-auto">
+    <body class="bg-custom-green font-bobby-jones min-h-screen">
         <c:import url="../INC/nav.jsp"/> 
         <div class="flex flex-col items-center justify-center p-4 mt-18 mb-10">
             <div class="overflow-x-auto w-full max-w-7xl">
                 <h1 class="flex items-center justify-center text-shadow-black text-green-700 text-3xl font-black">Elige uno de tus Veh&iacute;culos para modificarlo</h1>
-                <table class="table-auto bg-custom-gray w-full text-left border-collapse">
+                <table class="table-auto bg-custom-gray w-full text-left border-collapse mb-6">
                     <thead class="bg-gray-200">
                         <tr>
                             <th class="px-4 py-2">Elige</th>
@@ -70,7 +70,7 @@
                         <tbody>
                             <c:forEach items="${vehiculos}" var="vehiculo">
                                 <tr class="bg-white border-b">
-                                    <td class="bg-green-700 hover:bg-green-600 centro"><input type="radio" name="registro" value="${vehiculo.idVehiculo}"/></td>
+                                    <td class="bg-green-700 hover:bg-green-600 text-center"><input type="radio" name="registro" value="${vehiculo.idVehiculo}"/></td>
                                     <td class="px-4 py-2"><c:out value="${vehiculo.marca}"/></td>
                                     <td class="px-4 py-2"><c:out value="${vehiculo.modelo}"/></td>
                                     <td class="px-4 py-2"><c:out value="${vehiculo.motor}"/></td>
