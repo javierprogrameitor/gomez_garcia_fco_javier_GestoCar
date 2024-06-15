@@ -21,7 +21,7 @@ public class ReturnUsu extends HttpServlet {
 
 //        request.getSession().invalidate();
         
-        request.getRequestDispatcher("/").forward(request, response);
+        request.getRequestDispatcher("/JSP/usuario.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

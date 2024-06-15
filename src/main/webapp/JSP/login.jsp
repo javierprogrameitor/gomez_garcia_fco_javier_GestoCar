@@ -59,7 +59,7 @@
                         </div>
                         <div class="bg-white px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                             <button type="button" onclick="window.location.href = '${contextPath}/index.jsp'" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm">
-                                Iniciar Sesion con Nombre y Email
+                                Iniciar Sesion con Email y Password
                             </button>
                         </div>
                     </div>
