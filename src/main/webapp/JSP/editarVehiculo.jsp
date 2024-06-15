@@ -46,7 +46,7 @@
         </style>
         <title>Editar Vehiculo</title>
     </head>
-    <body class="bg-custom-green font-bobby-jones min-h-screen">
+    <body class="bg-custom-green  min-h-screen">
         <c:import url="../INC/nav.jsp"/> 
         <c:if test="${modificacionExitosa}">
             <div id="modal" class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
@@ -140,6 +140,14 @@
                             MODIFICAR</button>
                     </div>
                 </form>
+                    <!<!-- Salir -->
+                <div  class="flex items-center justify-center">
+                    <form action="<c:out value='${contextPath}' />/ReturnUsu" method="post"> 
+                        <button type="submit" class="bg-green-700 hover:bg-green-600 text-shadow-black font-bold py-2 px-4 rounded focus:outline-none mt-4 text-shadow-black">
+                            SALIR
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
         <c:import url="/INC/footer.jsp"/> 

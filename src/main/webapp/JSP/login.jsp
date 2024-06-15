@@ -44,7 +44,7 @@
         <title>Login</title>
     </head>
 
-    <body class="bg-custom-green font-bobby-jones h-auto">
+    <body class="bg-custom-green min-h-screen">
         <c:import url="../INC/nav.jsp"/> 
         <c:if test="${usuarioCreado}">
             <div id="modal" class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
@@ -87,29 +87,42 @@
                     <label for="email" class="block text-green-600 text-lg font-bold mb-2 mt-4">Email:</label>
                     <input type="email" id="email" name="email" 
                            class="border border-green-600 rounded w-full py-2 px-3 leading-tight focus:outline-none text-shadow-black"
-                            />
+                           />
                     <!----Password------------------------------------------------->
                     <label for="password" class="block text-green-600 text-lg font-bold mb-2 mt-4">Password :</label>
                     <input type="password" id="password" name="password"  
                            class="border border-green-600 rounded w-full py-2 px-3  leading-tight focus:outline-none text-shadow-black"
-                            />
+                           />
                     <!----DNI------------------------------------------------->
                     <label for="dni" class="block text-green-600 text-lg font-bold mb-2 mt-4">DNI :</label>
                     <input type="text" id="dni" name="dni" 
                            class="border border-green-600 rounded w-full py-2 px-3 leading-tight focus:outline-none text-shadow-black"/>
+                    <c:if test="${not empty dniError}">
+                        <div class="text-red-600 text-sm mt-2">${dniError}</div>
+                    </c:if>
                     <!----Boton------------------------------------------------->
                     <div class="flex justify-center text-shadow-black mt-4">
                         <button type="submit" value="crearCuenta" name="boton"
                                 class="bg-green-700 hover:bg-green-600 text-shadow-black font-bold py-2 px-4 rounded focus:outline-none mt-4 text-shadow-black">CREAR
                             CUENTA</button>
                     </div>
+
                     <!----------------------------------------------------->
                     <div>
                         <hr class="w-full border-t-1 border-white mt-4">
                     </div>
                 </form>
+                <!-- Boton Salir -->
+                <div class="flex justify-center text-shadow-black mt-4">
+                    <form action="<c:out value='${contextPath}' />/Return" method="post"> 
+                        <button type="submit" class="bg-green-700 hover:bg-green-600 text-shadow-black font-bold py-2 px-4 rounded focus:outline-none mt-4 text-shadow-black">
+                            SALIR
+                        </button>
+                    </form>
+                </div> 
             </div>
         </div>
+
         <c:import url="/INC/footer.jsp"/> 
         <div>
             <hr class="w-full border-t-1 border-white">

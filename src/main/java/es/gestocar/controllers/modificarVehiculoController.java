@@ -61,26 +61,31 @@ public class modificarVehiculoController extends HttpServlet {
             String registroParam = request.getParameter("registro");
             int vehiculoId = Integer.parseInt(registroParam);
             session.setAttribute("idVehiculo", vehiculoId); // Establecer el idVehiculo en la sesión
+
+            /* Cargar los datos del vehículo
+            Vehiculo vehiculo = vehiculoDAO.getVehiculoById(vehiculoId);
+            request.setAttribute("vehiculo", vehiculo);
+             */
             request.getRequestDispatcher("JSP/editarVehiculo.jsp").forward(request, response);
 
         } else if ("guardar".equals(action)) {
             try {
                 Vehiculo vehiculo = new Vehiculo();
                 int idVehiculo = (int) session.getAttribute("idVehiculo");  //
-                 boolean modificacionExitosa = false;
+                boolean modificacionExitosa = false;
 
                 vehiculo.setIdVehiculo(idVehiculo);
                 BeanUtils.populate(vehiculo, request.getParameterMap());
 
                 vehiculo.setUsuarioId(usuarioId); // Seteamos el id del usuario en el vehiculo
                 vehiculoDAO.update(vehiculo);
-                
+
                 modificacionExitosa = true;
 
                 // Refrescar la lista de vehículos y volver a mostrar la página de modificar
                 List<Vehiculo> vehiculos = vehiculoDAO.getVehiculosByUsuarioId(usuarioId);
                 request.setAttribute("vehiculos", vehiculos);
-                 request.setAttribute("modificacionExitosa", modificacionExitosa);
+                request.setAttribute("modificacionExitosa", modificacionExitosa);
                 request.getRequestDispatcher("JSP/editarVehiculo.jsp").forward(request, response);
 
             } catch (IllegalAccessException | InvocationTargetException ex) {

@@ -41,7 +41,7 @@
         <title>Logeado</title>
     </head>
 
-    <body class="bg-custom-green font-bobby-jones h-auto">
+    <body class="bg-custom-green min-h-screen">
         <c:import url="../INC/nav.jsp"/> 
         <div class="flex flex-grow flex-col items-center justify-center p-4 mt-28 mb-20">
             <div class="bg-custom-gray rounded-lg p-6 md:p-8 mb-6 form-border text-shadow-black w-full max-w-md">
@@ -51,32 +51,39 @@
                         <hr class="w-full border-t-1 border-white mt-4">
                     </div>
 
-                   
+
                     <!----Email------------------------------------------------->
                     <label  class="block text-green-600 text-lg font-bold mb-2 mt-4">Email :</label>
                     <input type="email" id="email" name="email"  
                            class="border border-green-600 rounded w-full py-2 px-3  leading-tight focus:outline-none text-shadow-black"
                            required />
-                     <!----Password------------------------------------------------->
+                    <!----Password------------------------------------------------->
                     <label  class="block text-green-600 text-lg font-bold mb-2 mt-4">Password</label>
                     <input type="text" id="password" name="password"   
                            class="border border-green-600 rounded w-full py-2 px-3 leading-tight focus:outline-none text-shadow-black"
                            required />
 
-                    <!----Boton------------------------------------------------->
-                    <div class="flex justify-center text-shadow-black mt-4">
-                        <button type="submit" value="Iniciar" name="boton" 
-                                class="bg-green-700 hover:bg-green-600 text-shadow-black font-bold py-2 px-4 rounded focus:outline-none mt-4 text-shadow-black">
-                            INICIAR</button>
-                    </div>
-                    <!----------------------------------------------------->
-                    <div>
-                        <hr class="w-full border-t-1 border-white mt-4">
+                    <!----Botones------------------------------------------------->
+                    <div class="flex justify-evenly text-shadow-black mt-4">
+                        <button type="submit" value="Iniciar" name="boton"
+                                class="bg-green-700 hover:bg-green-600 text-shadow-black font-bold py-2 px-4 rounded focus:outline-none text-shadow-black">
+                            INICIAR
+                        </button>
+                        <form action="<c:out value='${contextPath}' />/Return" method="post">
+                            <button type="submit"
+                                    class="bg-green-700 hover:bg-green-600 text-shadow-black font-bold py-2 px-4 rounded focus:outline-none text-shadow-black">
+                                SALIR
+                            </button>
+                        </form>
                     </div>
                 </form>
+
+                <div>
+                    <hr class="w-full border-t-1 border-white mt-4">
+                </div>
             </div>
         </div>
-               <c:import url="/INC/footer.jsp"/> 
+        <c:import url="/INC/footer.jsp"/> 
         <div>
             <hr class="w-full border-t-1 border-white">
         </div>

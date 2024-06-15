@@ -46,7 +46,7 @@
         </style>
         <title>CrearGasto</title>
     </head>
-    <body class="bg-custom-green font-bobby-jones min-h-screen">
+    <body class="bg-custom-green  min-h-screen">
         <c:import url="../INC/nav.jsp"/> 
            <c:if test="${gastoCreado}">
             <div id="modal" class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">

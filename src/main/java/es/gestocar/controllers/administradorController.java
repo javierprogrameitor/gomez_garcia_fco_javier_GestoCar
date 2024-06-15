@@ -27,26 +27,6 @@ public class administradorController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        /*
-           String url = "JSP/accionesAdministrador.jsp";
-
-        // Llenar las listas de usuarios y vehículos
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
-        VehiculoDAO vehiculoDAO = new VehiculoDAO();
-
-        List<Usuario> usuarios = usuarioDAO.getUsuarios();
-        
-         request.setAttribute("usuario", usuarios);
-        
-        List<Vehiculo> vehiculos = vehiculoDAO.getVehiculos();
-
-       
-        request.setAttribute("vehiculo", vehiculos);
-
-        request.getRequestDispatcher(url).forward(request, response);
-        
-        */
-        
         String url = "JSP/accionesAdministrador.jsp";
         String boton = request.getParameter("boton");
 
@@ -70,6 +50,8 @@ public class administradorController extends HttpServlet {
             }
         } else if ("eliminarVehiculo".equals(boton)) {
             String idVehiculoStr = request.getParameter("registroVehiculo");
+            
+            System.out.println("Id vehiculo: " + idVehiculoStr );
             if (idVehiculoStr != null) {
                 int idVehiculo = Integer.parseInt(idVehiculoStr);
                 boolean exito = vehiculoDAO.deleteVehiculoID(idVehiculo);
@@ -77,7 +59,7 @@ public class administradorController extends HttpServlet {
                 if (exito) {
                     request.setAttribute("mensaje", "Vehículo eliminado correctamente");
                 } else {
-                    request.setAttribute("mensaje", "Error al eliminar vehículo");
+                    request.setAttribute("mensaje", "Error al eliminar vehículo, tiene gastos asociados");
                 }
             } else {
                 request.setAttribute("mensaje", "Selecciona primero y después Elimina");

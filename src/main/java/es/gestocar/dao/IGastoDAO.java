@@ -15,24 +15,36 @@ public interface IGastoDAO {
      * @return
      */
     public Boolean add(Gasto gasto);
-
     /**
-     * Obtiene las fotos cuyo id está dentro de un rango de valores
-     *
-     * @return Lista de objetos fotos
+     * 
+     * @param usuarioId
+     * @return 
      */
-    public List<Gasto> getGastoByCondicion(String[] registros);
-
+    public Double getTotalGastosByUsuarioId(int usuarioId);
     /**
-     * Elimina una foto de un vehiculo
-     *
-     * @param foto Objeto foto que se pretende eliminar
+     * 
+     * @param vehiculoId
+     * @return 
      */
-    public void delete(Gasto gasto);
-
+     public List<Gasto> getGastosByVehiculoId(int vehiculoId);
     /**
      * Abandona el hilo de la conexión a la base de datos
      */
+     
+     /**
+      * 
+      * 
+      * @param idVehiculo
+      * @param offset
+      * @param limit
+      * @return 
+      */
+       public List<Gasto> obtenerGastosPorVehiculoPaginados(int idVehiculo);
+       
+       /**
+        * 
+        * 
+        */
     public void closeConnection();
 
 }

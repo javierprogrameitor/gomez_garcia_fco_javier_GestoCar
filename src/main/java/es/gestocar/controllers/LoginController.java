@@ -38,33 +38,41 @@ public class LoginController extends HttpServlet {
             DAOFactory daof = DAOFactory.getDAOFactory();
             IUsuarioDAO udao = daof.getUsuarioDAO();
             Boolean error = false;
+            Boolean dniError = false;
+
             Enumeration<String> campos = request.getParameterNames();
             // Comprobamos que todos los campos del formulario estén rellenos
             if (!Utilidades.isFormCompleto(campos, request)) {
 
                 try {
 
-                    BeanUtils.populate(usuario, request.getParameterMap());
+                    // Validación del DNI
+                    String dni = request.getParameter("dni");
+                    if (dni.length() > 9) {
+                        dniError = true;
 
-                    // Aquí es donde encriptamos la contraseña con MD5
-                    String password = request.getParameter("password");
-                    String encryptedPassword = DigestUtils.md5Hex(password);
-                    usuario.setPassword(encryptedPassword);
+                    } else {
 
-               
+                        BeanUtils.populate(usuario, request.getParameterMap());
+
+                        // Aquí es donde encriptamos la contraseña con MD5
+                        String password = request.getParameter("password");
+                        String encryptedPassword = DigestUtils.md5Hex(password);
+                        usuario.setPassword(encryptedPassword);
+
+                    }
 
                 } catch (IllegalAccessException | InvocationTargetException ex) {
                     Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
                     error = true;
                 }
 
-                if (!error) {
+                if (!error && !dniError) {
                     udao.add(usuario);
                     request.setAttribute("usuarioCreado", true);
+                } else {
+                    request.setAttribute("dniError", "El DNI no puede ser más de 9 caracteres.");
                 }
-            } else {
-
-                url = "JSP/login.jsp";
             }
 
         }

@@ -78,7 +78,6 @@ public class UsuarioDAO implements IUsuarioDAO {
 
         return usuario;
     }
-    
 
     @Override
     public List<Usuario> getUsuarios() {
@@ -109,7 +108,7 @@ public class UsuarioDAO implements IUsuarioDAO {
 
         return usuarios;
     }
-    
+
     /**
      *
      * @param idUsuario
@@ -120,11 +119,10 @@ public class UsuarioDAO implements IUsuarioDAO {
      */
     @Override
     public boolean updateUsuarioCampoBaja(int idUsuario, boolean estado) {
-   boolean exito = false;
+        boolean exito = false;
         String sql = "UPDATE usuarios SET campobaja = ? WHERE idusuarios = ?";
 
-        try (Connection conexion = ConnectionFactory.getConnection();
-             PreparedStatement ps = conexion.prepareStatement(sql)) {
+        try (Connection conexion = ConnectionFactory.getConnection(); PreparedStatement ps = conexion.prepareStatement(sql)) {
 
             ps.setString(1, estado ? "T" : "F");
             ps.setInt(2, idUsuario);
@@ -132,18 +130,23 @@ public class UsuarioDAO implements IUsuarioDAO {
             int filasActualizadas = ps.executeUpdate();
             if (filasActualizadas > 0) {
                 exito = true;
+                conexion.commit();
             }
 
         } catch (SQLException ex) {
-            ex.printStackTrace(); // Manejo básico de la excepción, se debe mejorar en producción
+            try {
+                conexion.rollback();
+            } catch (SQLException ex1) {
+                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+
+        } finally {
+            closeConnection();
         }
 
         return exito;
-}
-    
-    
-    
-    
+    }
 
     @Override
     public Usuario getUsuarioById(int id) {

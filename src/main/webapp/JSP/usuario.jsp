@@ -43,7 +43,7 @@
         </style>
         <title>Usuario</title>
     </head>
-    <body class="bg-custom-green font-bobby-jones min-h-screen">
+    <body class="bg-custom-green min-h-screen">
         <c:import url="../INC/nav.jsp"/> 
         <c:if test="${vehiculoCreado}">
             <div id="modal" class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
@@ -211,7 +211,7 @@
                     <div class="flex justify-center text-shadow-black mt-4">
                         <form action="<c:out value='${contextPath}' />/visualizarGastoController" method="post"> 
                             <button type="submit" value="visualizarGasto" name="boton" class="bg-green-700 hover:bg-green-600 text-shadow-black font-bold py-2 px-4 rounded focus:outline-none mt-4 text-shadow-black">
-                                LISTAR SUS GASTOS DE UN VEHICULO
+                                LISTAR TODOS LOS GASTOS DEL VEHICULO
                             </button>
                         </form>
                     </div>
@@ -220,16 +220,16 @@
                     <div class="flex justify-center text-shadow-black mt-4">
                         <form action="<c:out value='${contextPath}' />/todoGastoController" method="post"> 
                             <button type="submit" value="todoGasto" name="boton" class="bg-green-700 hover:bg-green-600 text-shadow-black font-bold py-2 px-4 rounded focus:outline-none mt-4 text-shadow-black">
-                                TOTAL DE GASTOS DE UN VEHICULO
+                                TOTAL DE GASTOS DE TODOS SUS VEHICULO
                             </button>
                         </form>
                     </div>
 
                     <!-- Todo Gastos -->
                     <div class="flex justify-center text-shadow-black mt-4">
-                        <form action="<c:out value='${contextPath}' />/todoGastoController" method="post"> 
-                            <button type="submit" value="todoGasto" name="boton" class="bg-green-700 hover:bg-green-600 text-shadow-black font-bold py-2 px-4 rounded focus:outline-none mt-4 text-shadow-black">
-                                GASTOS DE MAYOR IMPORTE 
+                        <form action="<c:out value='${contextPath}' />/ajaxGastoController" method="post"> 
+                            <button type="submit" value="tabla" name="accion" class="bg-green-700 hover:bg-green-600 text-shadow-black font-bold py-2 px-4 rounded focus:outline-none mt-4 text-shadow-black">
+                               CONCEPTOS DE GASTOS
                             </button>
                         </form>
                     </div>

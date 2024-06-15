@@ -25,9 +25,6 @@
                     },
                 }
             }
-            function closeModal() {
-                document.getElementById('modal').style.display = 'none';
-            }
         </script>
         <style>
             @font-face {
@@ -44,38 +41,17 @@
                 font-family: 'Bobby-Jones', sans-serif;
             }
         </style>
-        <title>Visualizar Gastos</title>
+        <title>Total de Gastos</title>
     </head>
     <body class="bg-custom-green font-bobby-jones min-h-screen">
         <c:import url="../INC/nav.jsp"/> 
-       
-            <div class="container mx-auto px-4 py-8">
-                <h1 class="text-2xl font-bold mb-6 text-center">Gastos del Vehículo</h1>
-                <table class="min-w-full bg-white">
-                    <thead>
-                        <tr>
-                            <th class="py-2">Concepto</th>
-                            <th class="py-2">Fecha</th>
-                            <th class="py-2">Descripción</th>
-                            <th class="py-2">Importe</th>
-                            <th class="py-2">Establecimiento</th>
-                            <th class="py-2">Kilómetros</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <c:forEach var="gasto" items="${gastos}">
-                            <tr class="text-center">
-                                <td class="py-2"><c:out value="${gasto.concepto}"/></td>
-                                <td class="py-2"><c:out value="${gasto.fechaGasto}"/></td>
-                                <td class="py-2"><c:out value="${gasto.descripcion}"/></td>
-                                <td class="py-2"><c:out value="${gasto.importe}"/></td>
-                                <td class="py-2"><c:out value="${gasto.establecimiento}"/></td>
-                                <td class="py-2"><c:out value="${gasto.kilometros}"/></td>
-                            </tr>
-                        </c:forEach>
-                    </tbody>
-                </table>
-            </div>
+        <div class="container mx-auto px-4 py-8 text-center">
+            <h1 class="text-2xl font-bold text-green-700 mb-4">Total de Gastos</h1>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-xl font-bold mb-4">Total de Gastos de Todos los Vehículos:</h2>
+                <p class="text-2xl text-green-700">
+                    Total: <c:out value="${totalGastos}" /> €
+                </p>
                 <!-- Boton Salir -->
                 <div class="flex justify-center text-shadow-black mt-4">
                     <form action="<c:out value='${contextPath}' />/ReturnUsu" method="post"> 
@@ -84,9 +60,8 @@
                         </button>
                     </form>
                 </div> 
-            <c:if test="${empty gastos}">
-                <p>No se encontraron gastos para el vehículo seleccionado.</p>
-            </c:if>
-            <c:import url="/INC/footer.jsp"/> 
+            </div>
+        </div>
+        <c:import url="/INC/footer.jsp"/> 
     </body>
 </html>

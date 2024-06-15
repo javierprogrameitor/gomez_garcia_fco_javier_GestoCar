@@ -146,8 +146,7 @@ public class VehiculoDAO implements IVehiculoDAO {
 
         String sql = "DELETE FROM vehiculos WHERE idVehiculo=?";
 
-        try (Connection conexion = ConnectionFactory.getConnection(); 
-                PreparedStatement preparada = conexion.prepareStatement(sql)) {
+        try (Connection conexion = ConnectionFactory.getConnection(); PreparedStatement preparada = conexion.prepareStatement(sql)) {
 
             conexion.setAutoCommit(false);
             preparada.setInt(1, idVehiculo);
@@ -173,18 +172,28 @@ public class VehiculoDAO implements IVehiculoDAO {
         boolean exito = false;
         String sql = "DELETE FROM vehiculos WHERE idvehiculo = ?";
 
-        try (Connection conexion = ConnectionFactory.getConnection();
-                PreparedStatement ps = conexion.prepareStatement(sql)) {
+        try (Connection conexion = ConnectionFactory.getConnection(); PreparedStatement ps = conexion.prepareStatement(sql)) {
 
             ps.setInt(1, idVehiculo);
 
             int filasEliminadas = ps.executeUpdate();
             if (filasEliminadas > 0) {
                 exito = true;
+                conexion.commit();
             }
 
         } catch (SQLException ex) {
             ex.printStackTrace(); // Manejo básico de la excepción, se debe mejorar en producción
+
+            try {
+                if (conexion != null) {
+                    conexion.rollback();
+                }
+            } catch (SQLException ex1) {
+                Logger.getLogger(VehiculoDAO.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+        } finally {
+            closeConnection();
         }
 
         return exito;
@@ -228,7 +237,6 @@ public class VehiculoDAO implements IVehiculoDAO {
 
         return vehiculos;
     }
-
 
     @Override
     public int getLastInsertedId() {
